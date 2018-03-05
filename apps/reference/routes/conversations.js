@@ -10,6 +10,20 @@ let useCaseDefinition = require("../helpers/bin/useCaseBuilder");
  * @description
  * Get a conversation's details.
  * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-site-cloudId-conversation-conversationId-get | Get Conversation Details}
+ * @example
+
+ const {cloudId, conversationId} = res.locals.context;
+ logger.info(`${loggerInfoName} incoming request for ${conversationId}`);
+
+ //  App -> Conversation Detail <- StrideAPI
+ stride.api.conversations
+ .conversation_detail(cloudId, conversationId, {})
+ .then(conversationDetailsResponse => {
+				res.send(conversationDetailsResponse);
+				logger.info(`${loggerInfoName} outgoing request successful ${conversationId}`);
+				return conversationDetailsResponse;
+			})
+
  */
 router.get("/getConversationDetails", async (req, res, next) => {
 	let loggerInfoName = "conversation_details";
@@ -49,6 +63,17 @@ router.get("/getConversationDetails", async (req, res, next) => {
  * @description
  * Archive a conversation
  * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-site-cloudId-conversation-conversationId-archive-put | Put Conversation Archive }
+ * @example
+ stride.api.conversations
+ .conversation_archive(cloudId, conversationId, {body: {}})
+ .then(() => {
+					//archive has no content
+					res.sendStatus(200);
+					logger.info(`${loggerInfoName} outgoing successful.`);
+				})
+ .catch(err => {
+					logger.error(`${loggerInfoName} archiving found error: ${err}`);
+				});
  */
 router.post("/archiveConversation", async (req, res, next) => {
 	let loggerInfoName = "conversation_archive";
@@ -80,6 +105,17 @@ router.post("/archiveConversation", async (req, res, next) => {
  * @description
  * Unarchive a conversation
  * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-site-cloudId-conversation-conversationId-unarchive-put | Put Conversation UnArchive }
+ * @example
+
+ stride.api.conversations.conversation_unarchive(cloudId, conversationId, {})
+ .then(unarchiveResponse => {
+				res.sendStatus(200);
+				logger.info(`${loggerInfoName}:unarchived outgoing successful: ${unarchiveResponse}`);
+			})
+ .catch(err => {
+				logger.error(`${loggerInfoName} unarchiving found error: ${err}`);
+			});
+
  */
 router.post("/unarchiveConversation", async (req, res, next) => {
 	let loggerInfoName = "conversation_unarchive";
