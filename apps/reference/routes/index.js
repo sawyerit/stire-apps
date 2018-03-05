@@ -1,0 +1,13 @@
+module.exports.configuration = require("./configuration");
+module.exports.glances = require("./glances");
+module.exports.sidebar = require("./sidebar");
+module.exports.dialog = require("./dialog");
+module.exports.webhooks = require("./webhooks");
+module.exports.actions = require("./actions");
+module.exports.messages = require("./messages");
+module.exports.conversations = require("./conversations");
+module.exports.media = require("./media");
+module.exports.users = require("./users");
+module.exports.lifecycle = require ("./lifecycle");
+module.exports.custom = require ("./custom");
+module.exports.help = require ("./help");

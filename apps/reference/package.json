@@ -1,0 +1,32 @@
+{
+  "name": "Stride-Reference-App",
+  "repository": "bitbucket:atlassian/stride-apps-reference/",
+  "description": "Stride Reference Application covers all of the features you can use when you integration with Stride.",
+  "dependencies": {
+    "adf-builder": "^2.0.1",
+    "body-parser": "^1.15.2",
+    "bunyan": "^1.8.12",
+    "bunyan-format": "^0.2.1",
+    "cors": "^2.8.4",
+    "dotenv": "^5.0.0",
+    "express": "^4.14.0",
+    "express-bunyan-logger": "^1.3.2",
+    "jwt-simple": "^0.5.1",
+    "request": "^2.72.0",
+    "request-promise": "^4.2.2",
+    "stride-node-client": "../../src"
+  },
+  "devDependencies": {
+    "eslint": "^4.18.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "prettier": "^1.11.1"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "lint": "eslint .",
+    "lint:fix": "npm run lint -- --fix"
+  },
+  "engines": {
+    "node": ">= 8.0.0"
+  }
+}

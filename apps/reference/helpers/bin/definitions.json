@@ -1,0 +1,24 @@
+{
+  "message_delete_conversation": "https://developer.atlassian.com/cloud/stride/rest/#rest-site-cloudId-conversation-conversationId-message-messageId-delete",
+  "message_send_direct": "https://developer.atlassian.com/cloud/stride/rest/#rest-site-cloudId-conversation-user-userId-message-post",
+  "message_update_conversation": "https://developer.atlassian.com/cloud/stride/rest/#rest-site-cloudId-conversation-conversationId-message-messageId-put",
+  "message_conversation": "https://developer.atlassian.com/cloud/stride/rest/#rest-site-cloudId-conversation-conversationId-message-post",
+  "message_text_conversation": "https://developer.atlassian.com/cloud/stride/rest/#rest-site-cloudId-conversation-conversationId-message-post",
+  "conversation_archive": "https://developer.atlassian.com/cloud/stride/rest/#rest-site-cloudId-conversation-conversationId-archive-put",
+  "conversation_unarchive": "https://developer.atlassian.com/cloud/stride/rest/#rest-site-cloudId-conversation-conversationId-unarchive-put",
+  "conversation_direct": "https://developer.atlassian.com/cloud/stride/rest/",
+  "conversation_details": "https://developer.atlassian.com/cloud/stride/rest/#rest-site-siteId-conversation-conversationId-get",
+  "conversation_roster": "https://developer.atlassian.com/cloud/stride/rest/#rest-site-cloudId-conversation-conversationId-roster-get",
+  "conversations_all": "https://developer.atlassian.com/cloud/stride/rest/#rest-site-cloudId-conversation-get",
+  "action_card": "https://developer.atlassian.com/cloud/stride/learning/actions/",
+  "send_update_card": "https://developer.atlassian.com/cloud/stride/learning/actions/",
+  "update_action_card_message": "https://developer.atlassian.com/cloud/stride/learning/actions/",
+  "webhooks_conversation_update": "https://developer.atlassian.com/cloud/stride/apis/modules/chat/webhook/",
+  "webhook_messages": "https://developer.atlassian.com/cloud/stride/apis/modules/chat/webhook/",
+  "media_file_upload": "https://developer.atlassian.com/cloud/stride/rest/#rest-site-cloudId-conversation-conversationId-media-post",
+  "user_details": "https://developer.atlassian.com/cloud/stride/rest/",
+  "format_message_variety": "https://developer.atlassian.com/cloud/stride/apis/document/structure/",
+  "default": "https://developer.atlassian.com/cloud/stride/"
+}
+
+

@@ -1,0 +1,64 @@
+{
+  "baseUrl": "${host}",
+  "key": "helloApp",
+  "lifecycle": {
+    "installed": "/installed",
+    "uninstalled": "/uninstalled"
+  },
+  "modules": {
+    "chat:bot": [
+      {
+        "key": "hello-bot",
+        "mention": {
+          "url": "/webhooks/mention"
+        },
+        "directMessage": {
+          "url": "/webhooks/mention"
+        }
+      }
+    ],
+    "chat:glance": [
+      {
+        "key": "webhooks-glance",
+        "name": {
+          "value": "App Glance"
+        },
+        "icon": {
+          "url": "/public/img/logo.png",
+          "url@2x": "/public/img/logo.png"
+        },
+        "target": "webhooks-action-openSidebar",
+        "queryUrl": "/module/glance/state",
+        "authentication": "jwt"
+      }
+    ],
+    "chat:configuration": [
+      {
+        "key": "webhooks-config",
+        "page": {
+          "target": "webhooks-dialog-config"
+        },
+        "state": {
+          "url": "/module/config/state"
+        },
+        "authentication": "jwt"
+      }
+    ],
+    "chat:bot:messages": [
+      {
+        "key": "hello-ping",
+        "pattern": ".*hello.*",
+        "url": "/webhooks/message"
+      }
+    ],
+    "chat:actionTarget": [
+      {
+        "key": "webhooks-action-openSidebar",
+        "openSidebar": {
+          "key": "webhooks-sidebar"
+        }
+      }
+    ]
+  }
+}
+

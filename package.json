@@ -1,0 +1,22 @@
+{
+  "name": "stride-apps-reference",
+  "version": "1.0.0",
+  "description": "Main Package file. Builds projects, docs, runs tests, etc.",
+  "main": "Stride API Reference Main",
+  "scripts": {
+    "install-packages": "./install.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/atlassian/stride-apps-reference.git"
+  },
+  "keywords": [
+    "stride",
+    "reference",
+    "api"
+  ],
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/atlassian/stride-apps-reference#readme",
+  "dependencies": {}
+}

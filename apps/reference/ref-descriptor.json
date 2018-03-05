@@ -1,0 +1,199 @@
+{
+  "baseUrl": "${host}",
+  "key": "reference",
+  "lifecycle": {
+    "installed": "/lifecycle/installed",
+    "uninstalled": "/lifecycle/uninstalled"
+  },
+  "modules": {
+    "chat:bot": [
+      {
+        "key": "reference-bot",
+        "mention": {
+          "url": "/webhooks/mention"
+        },
+        "directMessage": {
+          "url": "/webhooks/mention"
+        }
+      }
+    ],
+    "chat:bot:messages": [
+      {
+        "key": "reference-weather",
+        "pattern": ".*weather.*",
+        "url": "/webhooks/weather"
+      }
+    ],
+    "chat:inputAction": [
+      {
+        "key": "reference-input-action",
+        "name": {
+          "value": "Open App Dialog"
+        },
+        "target": "reference-action-openDialog"
+      }
+    ],
+    "chat:dialog": [
+      {
+        "key": "reference-dialog",
+        "title": {
+          "value": "App Dialog"
+        },
+        "options": {
+          "size": {
+            "width": "500px",
+            "height": "300px"
+          },
+          "primaryAction": {
+            "key": "action-appendMessage",
+            "name": {
+              "value": "Append Message"
+            }
+          },
+          "secondaryActions": [
+            {
+              "key": "action-close",
+              "name": {
+                "value": "Close"
+              }
+            },
+            {
+              "key": "action-openSidebar",
+              "name": {
+                "value": "Open Sidebar"
+              }
+            },
+            {
+              "key": "action-disableButton",
+              "name": {
+                "value": "Disable Button"
+              }
+            }
+          ]
+        },
+        "url": "/module/dialog",
+        "authentication": "jwt"
+      },
+      {
+        "key": "reference-dialog-config",
+        "title": {
+          "value": "App Configuration"
+        },
+        "options": {
+          "size": {
+            "width": "700px",
+            "height": "500px"
+          },
+          "primaryAction": {
+            "key": "action-save",
+            "name": {
+              "value": "Save"
+            }
+          },
+          "secondaryActions": [
+            {
+              "key": "action-close",
+              "name": {
+                "value": "Close"
+              }
+            }
+          ]
+        },
+        "url": "/module/config",
+        "authentication": "jwt"
+      }
+    ],
+    "chat:sidebar": [
+      {
+        "key": "reference-sidebar",
+        "name": {
+          "value": "App Sidebar"
+        },
+        "url": "/module/sidebar",
+        "authentication": "jwt"
+      }
+    ],
+    "chat:glance": [
+      {
+        "key": "reference-glance",
+        "name": {
+          "value": "App Glance"
+        },
+        "icon": {
+          "url": "/public/img/logo.png",
+          "url@2x": "/public/img/logo.png"
+        },
+        "target": "reference-action-openSidebar",
+        "queryUrl": "/module/glance/state",
+        "authentication": "jwt"
+      }
+    ],
+    "chat:messageAction": [
+      {
+        "key": "reference-message-action-dialog",
+        "name": {
+          "value": "Send to Dialog"
+        },
+        "target": "reference-action-openDialog"
+      },
+      {
+        "key": "reference-message-action-service",
+        "name": {
+          "value": "Call Service"
+        },
+        "target": "reference-action-callService"
+      }
+    ],
+    "chat:configuration": [
+      {
+        "key": "reference-config",
+        "page": {
+          "target": "reference-dialog-config"
+        },
+        "state": {
+          "url": "/module/config/state"
+        },
+        "authentication": "jwt"
+      }
+    ],
+    "chat:webhook": [
+      {
+        "key": "reference-webhook-conversations",
+        "event": "conversation:updates",
+        "url": "/webhooks/conversationEvent"
+      },
+      {
+        "key": "reference-webhook-roster",
+        "event": "roster:updates",
+        "url": "/webhooks/roster"
+      }
+    ],
+    "chat:actionTarget": [
+      {
+        "key": "reference-action-openSidebar",
+        "openSidebar": {
+          "key": "reference-sidebar"
+        }
+      },
+      {
+        "key": "reference-action-openDialog",
+        "openDialog": {
+          "key": "reference-dialog"
+        }
+      },
+      {
+        "key": "reference-action-callService",
+        "callService": {
+          "url": "/actions/action/reference-service"
+        }
+      },
+      {
+        "key": "reference-action-callService-updateMessage",
+        "callService": {
+          "url": "/actions/action/reference-service-updateMessage"
+        }
+      }
+    ]
+  }
+}
+

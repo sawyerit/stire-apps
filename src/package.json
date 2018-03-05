@@ -1,0 +1,19 @@
+{
+  "name": "stride-node-client",
+  "version": "0.0.1",
+  "description": "Stride NodeJS Client",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
+  },
+  "keywords": [
+    "Stride",
+    "Client"
+  ],
+  "author": "Pratik Shah",
+  "license": "ISC"
+}

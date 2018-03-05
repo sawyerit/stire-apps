@@ -1,0 +1,7 @@
+*.DS_Store
+.env
+node_modules
+.idea
+.DS*
+*.iml
+docs/public/
