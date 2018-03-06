@@ -44,7 +44,8 @@ router.get("/config/state", cors(), async (req, res, next) => {
  * @name Config Data Fetch
  * @description
  * Fetching the configuration data for a conversation.
- * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-app-module-chat-conversation-chat-configuration-key-state-get  |Store Config }
+ * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-app-module-chat-conversation-chat-configuration-key-state-get  |Config Store API }
+ * @see {@link https://developer.atlassian.com/cloud/stride/learning/config-pages/  | Config Guide}
  */
 router.get("/config/content", (req, res, next) => {
 	let loggerInfoName = "config_state_get";
@@ -69,6 +70,7 @@ router.get("/config/content", (req, res, next) => {
  * @description
  * Storing the configuration data for a conversation.
  * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-app-module-chat-conversation-chat-configuration-key-state-post  |Store Config }
+ * @see {@link https://developer.atlassian.com/cloud/stride/learning/config-pages/  | Config Guide}
  */
 router.post("/config/content", async (req, res, next) => {
 	let loggerInfoName = "config_state_post";

@@ -11,7 +11,7 @@ const app_name = process.env.APP_NAME || "Stride Reference App";
  * @name Message Direct
  * @description
  * Send a direct message to a user.
- * @see {@link   https://developer.atlassian.com/cloud/stride/rest/#api-site-cloudId-conversation-user-userId-message-post | Direct Message }
+ * @see {@link   https://developer.atlassian.com/cloud/stride/learning/messages/ | Messages Guide }
  */
 router.post("/direct", async (req, res, next) => {
 	const loggerInfoName = "message_send_direct";
@@ -97,16 +97,16 @@ router.get("/richFormatMessage", async (req, res, next) => {
 
 		//Format Message
 		stride.api.messages
-				.message_send_conversation(cloudId, conversationId, {
-					body: variousFormatAtlassianDoc
-				})
-				.then(messageFormatResponse => {
-					res.sendStatus(204);
-					logger.info(`${loggerInfoName} outgoing successful ${util.format(messageFormatResponse)}`);
-				})
-				.catch(err => {
-					logger.error(`${loggerInfoName} sending various format message found error: ${err}`);
-				});
+			.message_send_conversation(cloudId, conversationId, {
+				body: variousFormatAtlassianDoc
+			})
+			.then(messageFormatResponse => {
+				res.sendStatus(204);
+				logger.info(`${loggerInfoName} outgoing successful ${util.format(messageFormatResponse)}`);
+			})
+			.catch(err => {
+				logger.error(`${loggerInfoName} sending various format message found error: ${err}`);
+			});
 	} catch (err) {
 		logger.error(`${loggerInfoName} error: ${err}`);
 		next(err);
@@ -224,7 +224,6 @@ router.post("/delete", async (req, res, next) => {
 		next(err);
 	}
 });
-
 
 
 module.exports = router;

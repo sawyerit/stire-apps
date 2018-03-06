@@ -12,6 +12,7 @@ const app_name = process.env.APP_NAME || "Stride Reference App";
 /**
  *  @name Webhook Messages
  *  @see {@link https://developer.atlassian.com/cloud/stride/apis/modules/chat/webhook/ | Installation Events }
+ *  @see {@link https://developer.atlassian.com/cloud/stride/learning/adding-bots/ | Bots Guide }
  *  @description
  *
  *  Stride can listen for messages with a distinct pattern.  Enable messages to listen for by adding the module in the descriptor and providing

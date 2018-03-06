@@ -11,7 +11,7 @@ const util = require("util");
  * @name Media File Upload
  * @description
  * Media file must be a base64 data uri string. Headers must set content-type of application/octet-stream.
- * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-site-cloudId-conversation-conversationId-media-mediaId-post | Send Conversation Message }
+ * @see {@link https://developer.atlassian.com/cloud/stride/learning/sending-media/ | Sending Media Messages }
  *
  */
 router.get("/mediaMessage", async (req, res, next) => {
@@ -24,7 +24,9 @@ router.get("/mediaMessage", async (req, res, next) => {
 			logger.error(`${loggerInfoName} media file upload found error: ${err}`);
 		});
 
-		if(mediaUploadResponse.data.id) {res.sendStatus(204)} 
+		if (mediaUploadResponse.data.id) {
+			res.sendStatus(204);
+		}
 
 		logger.info(`${loggerInfoName} media upload successful ${util.format(mediaUploadResponse)}`);
 
