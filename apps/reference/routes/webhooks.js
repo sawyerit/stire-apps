@@ -11,8 +11,9 @@ const app_name = process.env.APP_NAME || "Stride Reference App";
 
 /**
  *  @name Webhook Messages
- *  @see {@link https://developer.atlassian.com/cloud/stride/apis/modules/chat/webhook/ | Installation Events }
- *  @see {@link https://developer.atlassian.com/cloud/stride/learning/adding-bots/ | Bots Guide }
+ *  @see {@link https://developer.atlassian.com/cloud/stride/apis/modules/chat/webhook/ | API Reference: Installation Events }
+ *  @see {@link https://developer.atlassian.com/cloud/stride/learning/bots/ | Concept Guide }
+ *  @see {@link https://developer.atlassian.com/cloud/stride/learning/adding-bots | How-to Guide }
  *  @description
  *
  *  Stride can listen for messages with a distinct pattern.  Enable messages to listen for by adding the module in the descriptor and providing
@@ -63,7 +64,7 @@ router.post("/weather", async (req, res, next) => {
 	let loggerInfoName = "webhook_messages";
 
 	try {
-		const {cloudId, conversationId} = res.locals.context;
+		const { cloudId, conversationId } = res.locals.context;
 		logger.info(`${loggerInfoName} message incoming for ${conversationId}: ${req.body.type}`);
 
 		//call weather API
@@ -75,7 +76,7 @@ router.post("/weather", async (req, res, next) => {
 		const message = "webhook message triggered!";
 		const messageOptsBody = weather.weatherCard(message, weatherResponse);
 
-		let opts = {body: messageOptsBody};
+		let opts = { body: messageOptsBody };
 		stride.api.messages
 			.message_send_conversation(cloudId, conversationId, opts)
 			.then(messageWebhookResponse => {
@@ -120,12 +121,12 @@ router.post("/mention", async (req, res, next) => {
 	let loggerInfoName = "webhook_mention";
 
 	try {
-		const {cloudId, conversationId} = res.locals.context;
+		const { cloudId, conversationId } = res.locals.context;
 		logger.info(`${loggerInfoName} message incoming for ${conversationId}: ${req.body.type}`);
 
 		//Send a help menu when bot is mentioned
 		const helpMenuBody = helpers.format.helpMenu();
-		let opts = {body: helpMenuBody};
+		let opts = { body: helpMenuBody };
 
 		stride.api.messages
 			.message_send_conversation(cloudId, conversationId, opts)
@@ -188,7 +189,7 @@ router.post("/conversationEvent", async (req, res, next) => {
 	let loggerInfoName = "webhooks_conversation_update";
 
 	try {
-		const {cloudId, conversationId} = res.locals.context;
+		const { cloudId, conversationId } = res.locals.context;
 		logger.info(`${loggerInfoName} incoming for ${conversationId}: ${req.body.type}`);
 
 		//Send Webhook Message
@@ -198,7 +199,7 @@ router.post("/conversationEvent", async (req, res, next) => {
 		);
 
 		stride.api.messages
-			.message_send_conversation(cloudId, conversationId, {body: doc})
+			.message_send_conversation(cloudId, conversationId, { body: doc })
 			.then(webhookConversationResponse => {
 				logger.info(
 					`${loggerInfoName} outgoing successful ${util.format(webhookConversationResponse)}`

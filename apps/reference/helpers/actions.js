@@ -61,4 +61,3 @@ module.exports.updateCard = () => {
 
 	return doc.toJSON();
 };
-

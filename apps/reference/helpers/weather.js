@@ -19,13 +19,13 @@ module.exports.weatherCard = (message, weatherResp) => {
 	const doc = new Document();
 
 	let card = doc
-			.applicationCard("Austin, Texas")
-			.link("https://developer.atlassian.com/cloud/stride/learning/adding-bots/")
-			.description("All is well. Or is it?");
+		.applicationCard("Austin, Texas")
+		.link("https://developer.atlassian.com/cloud/stride/learning/adding-bots/")
+		.description("All is well. Or is it?");
 	card
-			.detail()
-			.title("Temperature")
-			.text(`${convertKelvinToFaren(weatherResp.list[0].main.temp)}`);
+		.detail()
+		.title("Temperature")
+		.text(`${convertKelvinToFaren(weatherResp.list[0].main.temp)}`);
 	card.context("Utils / Weather").icon({
 		url: "https://image.ibb.co/fPPAB5/Stride_White_On_Blue.png",
 		label: "Stride"

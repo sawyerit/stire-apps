@@ -1,20 +1,17 @@
 $(document).ready(function() {
-
 	function init(event) {
-		$("#" + event.target.id).prop('disabled', true);
+		$("#" + event.target.id).prop("disabled", true);
 		$("#info").text("");
 	}
 
 	function success(event, data) {
-		$("#" + event.target.id).prop('disabled', false);
-		if(data)
-			$("#info").text(JSON.stringify(data));
+		$("#" + event.target.id).prop("disabled", false);
+		if (data) $("#info").text(JSON.stringify(data));
 	}
 
 	function error(event, data) {
-		$("#" + event.target.id).prop('disabled', false);
-		if(data)
-			$("#info").text(JSON.stringify(data));
+		$("#" + event.target.id).prop("disabled", false);
+		if (data) $("#info").text(JSON.stringify(data));
 	}
 
 	/**
@@ -339,5 +336,4 @@ $(document).ready(function() {
 			});
 		});
 	});
-
 });

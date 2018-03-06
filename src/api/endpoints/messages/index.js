@@ -68,7 +68,7 @@ class Messages {
 	 * @param {string} messageId message to be edited.
 	 * @param {object} opts none
 	 * @return {empty} 200 OK
-	 * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-site-cloudId-conversation-user-userId-message-messageId-put | Edit Direct Message }
+	 * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-site-cloudId-conversation-user-userId-message-messageId-put | Edit Conversation Message }
 
 	 */
 	message_update_conversation(cloudId, conversationId, messageId, opts) {

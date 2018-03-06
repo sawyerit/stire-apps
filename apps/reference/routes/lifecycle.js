@@ -14,7 +14,7 @@ const stride = require("../client");
  *  When a user installs your app, Stride calls this path configured in the lifecycle object of the descriptor.json.
  *  The server route must match the descriptor entry.
  **/
-router.post("/installed", async function (req, res, next) {
+router.post("/installed", async function(req, res, next) {
 	const loggerInfoName = "app_install";
 
 	//Send 200 response to Stride immediately, letting the server know you're on it.
@@ -32,7 +32,8 @@ router.post("/installed", async function (req, res, next) {
 			.then(response => {
 				logger.info(`${loggerInfoName} app user details ${util.format(response)}`);
 				return response;
-			}).catch(err => {
+			})
+			.catch(err => {
 				logger.error(`${loggerInfoName} error gett app user details: ${err}`);
 			});
 
@@ -66,12 +67,13 @@ router.post("/installed", async function (req, res, next) {
 /**
  *  @name Descriptor
  *  @see {@link https://developer.atlassian.com/cloud/stride/blocks/app-descriptor/ | Descriptor Requests }
+ *  @see {@link https://developer.atlassian.com/cloud/stride/blocks/app-lifecycle/ | Lifecycle Events }
  *  @description
  *
  *  The descriptor file is the map for your app that Stride uses to figure out where things live, such as routes, images, etc.
  *  Stride needs to be able to retrieve this from your app server.
  **/
-router.get("/descriptor", function (req, res, next) {
+router.get("/descriptor", function(req, res, next) {
 	try {
 		logger.info("module:descriptor incoming request");
 

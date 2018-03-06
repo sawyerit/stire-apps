@@ -6,7 +6,7 @@ const util = require("util");
 const stride = require("../client");
 const logger = require("../middleware/logger").logger;
 let helpers = require("../helpers");
-const {Document} = require("adf-builder");
+const { Document } = require("adf-builder");
 
 router.options("/action/reference-service", cors(), (req, res) => {
 	res.sendStatus(200);
@@ -19,14 +19,16 @@ router.options("/action/reference-service-updateMessage", cors(), (req, res) => 
  * @name Action Cards
  * @description
  * Adding Actions to messages.
- * @see {@link https://developer.atlassian.com/cloud/stride/learning/actions/ | Actions Guide}
+ * @see {@link https://developer.atlassian.com/cloud/stride/learning/messages/  | API Reference: Sending Messages }
+ * @see {@link https://developer.atlassian.com/cloud/stride/learning/actions/ | Concept Guide}
+ * @see {@link https://developer.atlassian.com/cloud/stride/learning/adding-actions/ | How-to Guide}
  */
 router.post("/actionCard", async (req, res, next) => {
 	let loggerInfoName = "action_card";
 	logger.info(`${loggerInfoName} incoming request`);
 
 	try {
-		const {cloudId, conversationId} = res.locals.context;
+		const { cloudId, conversationId } = res.locals.context;
 
 		let actionCard = helpers.actions.actionCard();
 
@@ -56,7 +58,7 @@ router.post("/action/reference-service", cors(), async (req, res, next) => {
 	const loggerInfoName = "action_service";
 
 	try {
-		const {cloudId, conversationId} = res.locals.context;
+		const { cloudId, conversationId } = res.locals.context;
 		logger.info(`${loggerInfoName} incoming call for ${conversationId}`);
 
 		const parameters = req.body.parameters;
@@ -133,12 +135,12 @@ router.post("/updateCard", cors(), async (req, res, next) => {
 	try {
 		logger.info(`${loggerInfoName} incoming with request body ${util.format(req.body)}`);
 
-		const {cloudId, conversationId} = res.locals.context;
+		const { cloudId, conversationId } = res.locals.context;
 		let updateCard = helpers.actions.updateCard();
 
 		let opts = {
 			body: updateCard,
-			headers: {"Content-Type": "Application/Json"}
+			headers: { "Content-Type": "Application/Json" }
 		};
 
 		let response = stride.api.messages
@@ -162,7 +164,7 @@ router.post("/action/reference-service-updateMessage", async (req, res, next) =>
 	const loggerInfoName = "update_action_card_message";
 
 	try {
-		const {cloudId, conversationId} = res.locals.context;
+		const { cloudId, conversationId } = res.locals.context;
 
 		const messageId = req.body.context.message.mid;
 		const parameters = req.body.parameters;
@@ -186,8 +188,8 @@ router.post("/action/reference-service-updateMessage", async (req, res, next) =>
 			card
 				.action()
 				.title("Resolve")
-				.target({key: "reference-action-callService-updateMessage"})
-				.parameters({incidentAction: "resolve"});
+				.target({ key: "reference-action-callService-updateMessage" })
+				.parameters({ incidentAction: "resolve" });
 		}
 
 		if (parameters.incidentAction === "resolve") {
@@ -198,8 +200,8 @@ router.post("/action/reference-service-updateMessage", async (req, res, next) =>
 			card
 				.action()
 				.title("Reopen")
-				.target({key: "reference-action-callService-updateMessage"})
-				.parameters({incidentAction: "reopen"});
+				.target({ key: "reference-action-callService-updateMessage" })
+				.parameters({ incidentAction: "reopen" });
 		}
 
 		if (parameters.incidentAction === "reopen") {
@@ -210,13 +212,13 @@ router.post("/action/reference-service-updateMessage", async (req, res, next) =>
 			card
 				.action()
 				.title("Ack")
-				.target({key: "reference-action-callService-updateMessage"})
-				.parameters({incidentAction: "ack"});
+				.target({ key: "reference-action-callService-updateMessage" })
+				.parameters({ incidentAction: "ack" });
 			card
 				.action()
 				.title("Resolve")
-				.target({key: "reference-action-callService-updateMessage"})
-				.parameters({incidentAction: "resolve"});
+				.target({ key: "reference-action-callService-updateMessage" })
+				.parameters({ incidentAction: "resolve" });
 		}
 
 		card.context("DevOps / Incidents").icon({
@@ -227,7 +229,7 @@ router.post("/action/reference-service-updateMessage", async (req, res, next) =>
 		let document = doc.toJSON();
 		let opts = {
 			body: document,
-			headers: {"Content-Type": "Application/Json"}
+			headers: { "Content-Type": "Application/Json" }
 		};
 
 		stride.api.messages

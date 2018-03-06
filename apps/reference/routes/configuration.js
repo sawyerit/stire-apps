@@ -24,11 +24,11 @@ router.get("/config/state", cors(), async (req, res, next) => {
 	let loggerInfoName = "config_state";
 
 	try {
-		const {conversationId} = res.locals.context;
+		const { conversationId } = res.locals.context;
 		logger.info(`${loggerInfoName} incoming request for ${conversationId}`);
 
 		const config = configStore[conversationId];
-		const state = {configured: true};
+		const state = { configured: true };
 		if (!config) state.configured = false;
 
 		res.send(JSON.stringify(state));
@@ -44,9 +44,11 @@ router.get("/config/state", cors(), async (req, res, next) => {
  * @name Config Data Fetch
  * @description
  * Fetching the configuration data for a conversation.
- * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-app-module-chat-conversation-chat-configuration-key-state-get  |Config Store API }
+ * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-app-module-chat-conversation-chat-configuration-key-state-get  | API Reference: Store Configuration }
  * @see {@link https://developer.atlassian.com/cloud/stride/learning/config-pages/  | Config Guide}
+ * @see {@link https://developer.atlassian.com/cloud/stride/learning/adding-config-pages/ | How-to Guide }
  */
+
 router.get("/config/content", (req, res, next) => {
 	let loggerInfoName = "config_state_get";
 
@@ -54,7 +56,7 @@ router.get("/config/content", (req, res, next) => {
 		const conversationId = res.locals.context.conversationId;
 		logger.info(`${loggerInfoName} incoming request for ${conversationId}`);
 
-		let config = configStore[conversationId] || {notificationLevel: "NONE"};
+		let config = configStore[conversationId] || { notificationLevel: "NONE" };
 
 		res.send(JSON.stringify(config));
 		logger.info(`${loggerInfoName} outgoing successful for ${conversationId}`);
@@ -69,27 +71,25 @@ router.get("/config/content", (req, res, next) => {
  * @name Config Data Storage
  * @description
  * Storing the configuration data for a conversation.
- * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-app-module-chat-conversation-chat-configuration-key-state-post  |Store Config }
- * @see {@link https://developer.atlassian.com/cloud/stride/learning/config-pages/  | Config Guide}
+ * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-app-module-chat-conversation-chat-configuration-key-state-post  |API Reference: Store Configuration }
+ * @see {@link https://developer.atlassian.com/cloud/stride/learning/config-pages/ | Concept Guide}
+ * @see {@link https://developer.atlassian.com/cloud/stride/learning/adding-config-pages/ | How-to Guide }
  */
 router.post("/config/content", async (req, res, next) => {
 	let loggerInfoName = "config_state_post";
 
 	try {
-		const {cloudId, conversationId} = res.locals.context;
+		const { cloudId, conversationId } = res.locals.context;
 		configStore[conversationId] = req.body;
 
 		let opts = {};
-		opts.body = {context: {cloudId, conversationId}, configured: true};
+		opts.body = { context: { cloudId, conversationId }, configured: true };
 
 		//Call config update post endpoint
-		stride.api.config
-			.config_update_post("reference-config", opts)
-			.then(() => {
-				res.sendStatus(204);
-				logger.info(`${loggerInfoName} outgoing successful.`);
-			});
-
+		stride.api.config.config_update_post("reference-config", opts).then(() => {
+			res.sendStatus(204);
+			logger.info(`${loggerInfoName} outgoing successful.`);
+		});
 	} catch (err) {
 		logger.error(`${loggerInfoName} error found: ${err}`);
 		res.sendStatus(500);

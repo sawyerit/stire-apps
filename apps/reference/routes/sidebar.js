@@ -7,7 +7,9 @@ const moduleName = "module:sidebar";
  * Sidebar
  * When a user clicks on the glance, Stride opens an iframe in the sidebar, and loads a page from your app,
  * from the URL specified in the app descriptor.
- * @see {@link https://developer.atlassian.com/cloud/stride/learning/glances-sidebars/ | Glances and Sidebars Guides }
+ * @see {@link https://developer.atlassian.com/cloud/stride/apis/jsapi/about-javascript-api/ | API Reference: Sidebar  }
+ * @see {@link https://developer.atlassian.com/cloud/stride/learning/glances-sidebars/ | Concept Guide }
+ * @see {@link https://developer.atlassian.com/cloud/stride/learning/adding-sidebars/ | How-to Guide }
  *
  * ``` "chat:sidebar": [
  *     {

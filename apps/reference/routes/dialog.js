@@ -5,8 +5,9 @@ const moduleName = "module:dialog";
 
 /**
  *  @name Dialog
- *  @see {@link https://developer.atlassian.com/cloud/stride/apis/modules/chat/dialog/ | Dialogs }
- *  @see {@link https://developer.atlassian.com/cloud/stride/learning/dialogs/ | Dialogs Guide }
+ *  @see {@link https://developer.atlassian.com/cloud/stride/apis/modules/chat/dialog/ | API Reference: Dialogs }
+ *  @see {@link https://developer.atlassian.com/cloud/stride/learning/dialogs/ | Concept Guide }
+ *  @see {@link https://developer.atlassian.com/cloud/stride/learning/adding-dialogs | How-to Guide }
  *  @description  Setup your url route and dialog key in the descriptor.json file. </b>
  *
  *  descriptor.json
@@ -28,7 +29,7 @@ const moduleName = "module:dialog";
 ]
 ```
 **/
-router.get("/dialog", function (req, res) {
+router.get("/dialog", function(req, res) {
 	res.redirect("/public/templates/app-module-dialog.html");
 	logger.info(`${moduleName} redirect successful`);
 });

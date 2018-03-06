@@ -1,4 +1,4 @@
-const {Document} = require("adf-builder");
+const { Document } = require("adf-builder");
 const app_name = process.env.APP_NAME || "Stride Reference App";
 
 /** @name Message Formatting
@@ -63,7 +63,7 @@ module.exports.differentFormatTypes = () => {
 	doc.paragraph().em("Here is a panel example");
 
 	const objectTest = {
-		body: {headers: {"Content-Type": "application/json"}},
+		body: { headers: { "Content-Type": "application/json" } },
 		method: "GET",
 		url: "/me"
 	};
@@ -119,52 +119,52 @@ module.exports.helpMenu = () => {
 	const doc = new Document();
 	doc.paragraph().strong(`${app_name} Help Menu`);
 
-	var list = doc.bulletList()
-		list.textItem("Send a message containing the word \"weather\" and i will get the weather for you.")
-	list.textItem("Change the Room Name or Topic, watch what happens.")
+	var list = doc.bulletList();
+	list.textItem('Send a message containing the word "weather" and i will get the weather for you.');
+	list.textItem("Change the Room Name or Topic, watch what happens.");
 	list.textItem("Open the sidebar for more things you can do with the Stride API.");
 
 	//todo: clean this up when the action mark is supported by the adf-builder
 	var openSidebar = {
-		"type": "paragraph",
-		"content": [
+		type: "paragraph",
+		content: [
 			{
-				"type": "text",
-				"text": "Click to open the sidebar",
-				"marks": [
+				type: "text",
+				text: "Click to open the sidebar",
+				marks: [
 					{
-						"type": "action",
-						"attrs": {
-							"title": "open sidebar",
-							"target": {
-								"key": "reference-action-openSidebar"
+						type: "action",
+						attrs: {
+							title: "open sidebar",
+							target: {
+								key: "reference-action-openSidebar"
 							}
 						}
 					}
 				]
 			},
 			{
-				"type": "text",
-				"text":  " and test everything you can do with the Stride API."
+				type: "text",
+				text: " and test everything you can do with the Stride API."
 			}
 		]
-	}
+	};
 	var docJSON = doc.toJSON();
-	docJSON.content[1].content[2].content[0]=openSidebar;
+	docJSON.content[1].content[2].content[0] = openSidebar;
 	//end
 
 	return docJSON;
 };
 
-module.exports.welcomeMessage = (appUserId) => {
+module.exports.welcomeMessage = appUserId => {
 	const doc = new Document();
 	doc
 		.paragraph()
 		.text(`I'm the ${app_name}! Thanks for installing me.  Ready to take the tour? `)
 		.emoji(":smile:")
 		.text(" Start by sending a message mentioning my bot (")
-			.mention(`${appUserId}`)
-			.text(") to see my help menu and discover all the things you can do with the Stride API ")
+		.mention(`${appUserId}`)
+		.text(") to see my help menu and discover all the things you can do with the Stride API ")
 		.emoji(":thumbsup::skin-tone-2:");
 	return doc.toJSON();
 };
@@ -203,7 +203,7 @@ module.exports.mediaFormat = (conversationId, mediaId) => {
 		.text(`${app_name}: I just sent you a formatted Message with Media Content! `)
 		.emoji(":rofl:");
 
-	doc.mediaGroup().media({type: "file", id: mediaId, collection: conversationId});
+	doc.mediaGroup().media({ type: "file", id: mediaId, collection: conversationId });
 
 	return doc.toJSON();
 };

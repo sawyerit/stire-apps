@@ -8,8 +8,6 @@ const util = require("util");
  * @name User Details
  * @description
  * Get a user's details like name, email, id, avatar url.
- * @see {@link https://developer.atlassian.com/cloud/stride/rest/ | User Details }
- *
  */
 
 router.get("/userDetails", async (req, res, next) => {
