@@ -15,6 +15,12 @@ router.options("/action/reference-service-updateMessage", cors(), (req, res) => 
 	res.sendStatus(200);
 });
 
+/**
+ * @name Action Cards
+ * @description
+ * Adding Actions to messages.
+ * @see {@link https://developer.atlassian.com/cloud/stride/learning/actions/ | Actions Guide}
+ */
 router.post("/actionCard", async (req, res, next) => {
 	let loggerInfoName = "action_card";
 	logger.info(`${loggerInfoName} incoming request`);

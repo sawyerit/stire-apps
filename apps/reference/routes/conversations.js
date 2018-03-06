@@ -10,6 +10,8 @@ let useCaseDefinition = require("../helpers/bin/useCaseBuilder");
  * @description
  * Get a conversation's details.
  * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-site-cloudId-conversation-conversationId-get | Get Conversation Details}
+ * @see {@link https://developer.atlassian.com/cloud/stride/learning/conversations/ | Conversations Guide }
+ *
  * @example
 
  const {cloudId, conversationId} = res.locals.context;
@@ -105,6 +107,7 @@ router.post("/archiveConversation", async (req, res, next) => {
  * @description
  * Unarchive a conversation
  * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-site-cloudId-conversation-conversationId-unarchive-put | Put Conversation UnArchive }
+ * @see {@link https://developer.atlassian.com/cloud/stride/learning/conversations/ | Conversations Guide }
  * @example
 
  stride.api.conversations.conversation_unarchive(cloudId, conversationId, {})

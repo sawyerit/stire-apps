@@ -20,8 +20,8 @@ stride-apps-reference
 |      |     |--app.js
 |      |     |--hello-descriptor.json
 |      |     |--.env
-|      |     |--public
-|    src-----|                
+|      |_____|--public
+|    src               
 |      |--package.json
 |      |--api
 |      |--lib

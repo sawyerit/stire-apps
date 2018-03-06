@@ -10,6 +10,8 @@ const stride = require("../client");
  * Making an AJAX call from the app front-ent (sidebar, dialog, configuration dialog) to the app back-end in a secured way,
  * using JWT tokens generated via the Stride Javascript API
  * You can find the context for the request (cloudId, conversationId) in the JWT token
+ *  * @see {@link https://developer.atlassian.com/cloud/stride/apis/jsapi/auth/withToken/ | Authentication With Token }
+
  */
 
 router.post("/ping", async (req, res, next) => {
@@ -26,23 +28,22 @@ router.post("/ping", async (req, res, next) => {
 		};
 
 		stride.api.messages
-				.message_send_conversation(cloudId, conversationId, textMessageOpts)
-				.then(response => {
-					res.send(JSON.stringify({"status": "OK"}));
-					logger.info(
-							`${loggerInfoName}: sent a response back`
-					);
-				})
-				.catch(err => {
-					logger.error(`${loggerInfoName} text message send found error: ${err}`);
-				});
+			.message_send_conversation(cloudId, conversationId, textMessageOpts)
+			.then(response => {
+				res.send(JSON.stringify({"status": "OK"}));
+				logger.info(
+					`${loggerInfoName}: sent a response back`
+				);
+			})
+			.catch(err => {
+				logger.error(`${loggerInfoName} text message send found error: ${err}`);
+			});
 	} catch (err) {
 		logger.error(`${loggerInfoName} error: ${err}`);
 		res.sendStatus(500);
 		next(err);
 	}
 });
-
 
 
 module.exports = router;
