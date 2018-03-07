@@ -6,32 +6,17 @@ const stride = require("../client");
 let useCaseDefinition = require("../helpers/bin/useCaseBuilder");
 
 /**
- * @name Conversation Details
+ * @name Conversations: get details
  * @description
  * Get a conversation's details.
- * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-site-cloudId-conversation-conversationId-get | Get Conversation Details}
- * @see {@link https://developer.atlassian.com/cloud/stride/learning/conversations/ | Conversations Guide }
- *
- * @example
-
- const {cloudId, conversationId} = res.locals.context;
- logger.info(`${loggerInfoName} incoming request for ${conversationId}`);
-
- //  App -> Conversation Detail <- StrideAPI
- stride.api.conversations
- .conversation_detail(cloudId, conversationId, {})
- .then(conversationDetailsResponse => {
-				res.send(conversationDetailsResponse);
-				logger.info(`${loggerInfoName} outgoing request successful ${conversationId}`);
-				return conversationDetailsResponse;
-			})
-
+ * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-site-cloudId-conversation-conversationId-get | API Reference: Get Conversation Details}
+ * @see {@link https://developer.atlassian.com/cloud/stride/learning/conversations/ | Concept Guide }
  */
 router.get("/getConversationDetails", async (req, res, next) => {
 	let loggerInfoName = "conversation_details";
 
 	try {
-		const {cloudId, conversationId} = res.locals.context;
+		const { cloudId, conversationId } = res.locals.context;
 		logger.info(`${loggerInfoName} incoming request for ${conversationId}`);
 
 		//  App -> Conversation Detail <- StrideAPI
@@ -61,32 +46,22 @@ router.get("/getConversationDetails", async (req, res, next) => {
 });
 
 /**
- * @name Conversation Archive
+ * @name Conversations: archive
  * @description
  * Archive a conversation
- * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-site-cloudId-conversation-conversationId-archive-put | Put Conversation Archive }
- * @example
- stride.api.conversations
- .conversation_archive(cloudId, conversationId, {body: {}})
- .then(() => {
-					//archive has no content
-					res.sendStatus(200);
-					logger.info(`${loggerInfoName} outgoing successful.`);
-				})
- .catch(err => {
-					logger.error(`${loggerInfoName} archiving found error: ${err}`);
-				});
+ * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-site-cloudId-conversation-conversationId-archive-put | API Reference: Put Conversation Archive }
+ * @see {@link https://developer.atlassian.com/cloud/stride/learning/conversations/ | Concept Guide }
  */
 router.post("/archiveConversation", async (req, res, next) => {
 	let loggerInfoName = "conversation_archive";
 
 	try {
-		const {cloudId, conversationId} = res.locals.context;
+		const { cloudId, conversationId } = res.locals.context;
 
 		logger.info(`${loggerInfoName} incoming request for ${conversationId}`);
 
 		stride.api.conversations
-			.conversation_archive(cloudId, conversationId, {body: {}})
+			.conversation_archive(cloudId, conversationId, { body: {} })
 			.then(() => {
 				//archive has no content
 				res.sendStatus(200);
@@ -103,28 +78,17 @@ router.post("/archiveConversation", async (req, res, next) => {
 });
 
 /**
- * @name Conversation Unarchive
+ * @name Conversations: unarchive
  * @description
  * Unarchive a conversation
- * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-site-cloudId-conversation-conversationId-unarchive-put | Put Conversation UnArchive }
- * @see {@link https://developer.atlassian.com/cloud/stride/learning/conversations/ | Conversations Guide }
- * @example
-
- stride.api.conversations.conversation_unarchive(cloudId, conversationId, {})
- .then(unarchiveResponse => {
-				res.sendStatus(200);
-				logger.info(`${loggerInfoName}:unarchived outgoing successful: ${unarchiveResponse}`);
-			})
- .catch(err => {
-				logger.error(`${loggerInfoName} unarchiving found error: ${err}`);
-			});
-
+ * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-site-cloudId-conversation-conversationId-unarchive-put | API Reference: Put Conversation UnArchive }
+ * @see {@link https://developer.atlassian.com/cloud/stride/learning/conversations/ | Concept Guide }
  */
 router.post("/unarchiveConversation", async (req, res, next) => {
 	let loggerInfoName = "conversation_unarchive";
 
 	try {
-		const {cloudId, conversationId} = res.locals.context;
+		const { cloudId, conversationId } = res.locals.context;
 
 		logger.info(`${loggerInfoName}:unarchived incoming request for ${conversationId}`);
 

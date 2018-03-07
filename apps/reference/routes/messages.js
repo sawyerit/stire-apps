@@ -8,16 +8,19 @@ const util = require("util");
 const app_name = process.env.APP_NAME || "Stride Reference App";
 
 /**
- * @name Message Direct
+ * @name Messages: send a direct message to a user
  * @description
- * Send a direct message to a user.
- * @see {@link   https://developer.atlassian.com/cloud/stride/learning/messages/ | Messages Guide }
+ * Since sending a message is done using a conversation ID, the the first step is to obtain the conversation ID for the direct conversation.
+ * You can then use the "send a message to a conversation" endpoint
+ * @see {@link https://developer.atlassian.com/cloud/stride/rest/#rest-site-cloudId-conversation-user-userId-message-post | API Reference: Direct Messages }
+ * @see {@link https://developer.atlassian.com/cloud/stride/learning/messages/ | Concept Guide }
+ * @see {@link https://developer.atlassian.com/cloud/stride/learning/sending-direct-messages-to-users/| How-to Guide }
  */
 router.post("/direct", async (req, res, next) => {
 	const loggerInfoName = "message_send_direct";
 
 	try {
-		const {cloudId, userId} = res.locals.context;
+		const { cloudId, userId } = res.locals.context;
 
 		logger.info(`${loggerInfoName}:direct incoming request for user ${userId}`);
 
@@ -26,7 +29,7 @@ router.post("/direct", async (req, res, next) => {
 
 		let optsDoc = {
 			body: message,
-			headers: {"Content-Type": "text/plain", accept: "application/json"}
+			headers: { "Content-Type": "text/plain", accept: "application/json" }
 		};
 
 		stride.api.messages
@@ -48,23 +51,24 @@ router.post("/direct", async (req, res, next) => {
 });
 
 /**
- * @name Message Text
+ * @name Messages: send a text message
  * @description
- * Send a plain text message.  Headers.content-type must be set to text/plain.
- * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-site-cloudId-conversation-conversationId-message-post | Send Conversation Message }
- *
+ * Send a plain text message.  Headers.Content-Type must be set to text/plain.
+ * @see {@link https://developer.atlassian.com/cloud/stride/rest/#rest-site-cloudId-conversation-user-userId-message-post | API Reference: Messages }
+ * @see {@link https://developer.atlassian.com/cloud/stride/learning/messages/ | Concept Guide }
+ * @see {@link https://developer.atlassian.com/cloud/stride/learning/sending-messages/#send-plain-text | How-to Guide }
  */
 router.post("/textFormat", async (req, res, next) => {
 	let loggerInfoName = "message_text_conversation";
 
 	try {
-		const {cloudId, conversationId} = res.locals.context;
+		const { cloudId, conversationId } = res.locals.context;
 		logger.info(`${loggerInfoName} incoming request for ${conversationId}`);
 
 		// Create and Send Text Message
 		let textMessageOpts = {
 			body: `${app_name}: I just send you a plain text message.  Remember, Content-Type must be set to text/plain.`,
-			headers: {"Content-Type": "text/plain", accept: "application/json"}
+			headers: { "Content-Type": "text/plain", accept: "application/json" }
 		};
 
 		stride.api.messages
@@ -85,12 +89,20 @@ router.post("/textFormat", async (req, res, next) => {
 	}
 });
 
-//doc string not required for this route.
+/**
+ * @name Messages: send a message with rich format
+ * @description
+ * Send a message in Rich Text Format.
+ * @see {@link https://developer.atlassian.com/cloud/stride/rest/#rest-site-cloudId-conversation-user-userId-message-post | API Reference: Messages }
+ * @see {@link   https://developer.atlassian.com/cloud/stride/learning/messages/ | Concept Guide }
+ * @see {@link   https://developer.atlassian.com/cloud/stride/learning/formatting-messages/ | How-to Guide }
+ * @see {@link   https://developer.atlassian.com/cloud/stride/blocks/message-format/ | Building Block }
+ */
 router.get("/richFormatMessage", async (req, res, next) => {
 	const loggerInfoName = "format_message_variety";
 
 	try {
-		const {cloudId, conversationId} = res.locals.context;
+		const { cloudId, conversationId } = res.locals.context;
 		logger.info(`${loggerInfoName} incoming request for ${conversationId}`);
 
 		const variousFormatAtlassianDoc = helpers.format.differentFormatTypes();
@@ -113,19 +125,19 @@ router.get("/richFormatMessage", async (req, res, next) => {
 	}
 });
 
-
 /**
- * @name Message Update
+ * @name Messages: update a message
  * @description
- * Update a conversation message
- * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-site-cloudId-conversation-user-userId-message-messageId-edit | Edit Conversation Message }
- *
+ * Update a message.
+ * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-site-cloudId-conversation-conversationId-message-messageId-put | API Reference: Update Conversation Message }
+ * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-site-cloudId-conversation-user-userId-message-messageId-put  | API Reference: Update Direct Message }
+ * @see {@link   https://developer.atlassian.com/cloud/stride/learning/messages/ | Concept Guide }
  */
 router.post("/edit", async (req, res, next) => {
 	let loggerInfoName = "message_update_conversation";
 
 	try {
-		const {cloudId, conversationId} = res.locals.context;
+		const { cloudId, conversationId } = res.locals.context;
 		logger.info(`${loggerInfoName} incoming request for ${conversationId}`);
 
 		//Send Message
@@ -173,26 +185,28 @@ router.post("/edit", async (req, res, next) => {
 });
 
 /**
- * @name Message Delete
+ * @name Messages: delete a message
  * @description
  * Delete an existing message.
- * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-site-cloudId-conversation-conversationId-message-messageId-delete | Delete Message }
- *
+ * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-site-cloudId-conversation-conversationId-message-messageId-delete | API Reference: Delete Conversation Message }
+ * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-site-cloudId-conversation-user-userId-message-messageId-delete | API Reference: Delete Direct Message }
+ * @see {@link   https://developer.atlassian.com/cloud/stride/learning/messages/ | Concept Guide }
  */
 router.post("/delete", async (req, res, next) => {
 	let loggerInfoName = "message_delete_in_conversation";
 
 	try {
-		const {cloudId, conversationId} = res.locals.context;
+		const { cloudId, conversationId } = res.locals.context;
 		logger.info(`${loggerInfoName} incoming request for ${conversationId}`);
 
 		// Create and Send Text Message
 		let textMessageOpts = {
 			body: `${app_name}: This message is about to be delete, watch out!`,
-			headers: {"Content-Type": "text/plain"}
+			headers: { "Content-Type": "text/plain" }
 		};
 
-		const messageToBeDeletedSend = stride.api.messages.message_send_conversation(cloudId, conversationId, textMessageOpts)
+		const messageToBeDeletedSend = stride.api.messages
+			.message_send_conversation(cloudId, conversationId, textMessageOpts)
 			.then(response => {
 				return response;
 			})
@@ -200,14 +214,12 @@ router.post("/delete", async (req, res, next) => {
 				logger.error(`${loggerInfoName} send message for deletion found error: ${err}`);
 			});
 
-
 		const txtMsgResponse = await messageToBeDeletedSend;
 
 		logger.info(`${loggerInfoName} outgoing successful ${txtMsgResponse}`);
 
 		let txtMsgResponseObj = JSON.parse(txtMsgResponse);
 		let messageId = txtMsgResponseObj.id;
-
 
 		stride.api.messages
 			.message_delete_conversation(cloudId, conversationId, messageId, {})
@@ -224,6 +236,5 @@ router.post("/delete", async (req, res, next) => {
 		next(err);
 	}
 });
-
 
 module.exports = router;

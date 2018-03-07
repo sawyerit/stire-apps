@@ -33,7 +33,7 @@ const loggerInfoName = "authentication";
 
 		 return {conversationId, cloudId, resource, userId};
  */
-const getContextInfo = function (decodedJWT) {
+const getContextInfo = function(decodedJWT) {
 	//todo: change to check if key exists.
 
 	const conversationId = decodedJWT.context.resourceId;
@@ -44,7 +44,7 @@ const getContextInfo = function (decodedJWT) {
 	logger.info(
 		`${loggerInfoName}:context conversationId: ${conversationId} cloudId: ${cloudId} resourceType ${resource} userId: ${userId}`
 	);
-	return {conversationId, cloudId, resource, userId};
+	return { conversationId, cloudId, resource, userId };
 };
 
 const authMiddleware = secret => (req, res, next) => {
@@ -77,20 +77,19 @@ const authMiddleware = secret => (req, res, next) => {
 			next();
 		} catch (err) {
 			if (err.message.indexOf("substring") > 0)
-				res.status(400).json({message: `JWT token not found`});
-			else res.status(403).json({message: `unable to authenticate: ${err}`});
+				res.status(400).json({ message: `JWT token not found` });
+			else res.status(403).json({ message: `unable to authenticate: ${err}` });
 			throw err;
 		}
 	}
 };
 
 // Ignores authentication for specific paths
-const ignoreRoute = function (path) {
-
+const ignoreRoute = function(path) {
 	let ignore = false;
 	const listOfRoutesToIgnore = ["/installed", "/descriptor", "/public", "/favicon"];
 
-	listOfRoutesToIgnore.forEach(function (route) {
+	listOfRoutesToIgnore.forEach(function(route) {
 		if (path.indexOf(route) !== -1) {
 			ignore = true;
 		}
@@ -100,7 +99,7 @@ const ignoreRoute = function (path) {
 };
 
 module.exports = {
-	authMiddleware: function (secret) {
+	authMiddleware: function(secret) {
 		return authMiddleware(secret);
 	}
 };

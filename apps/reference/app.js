@@ -7,11 +7,11 @@ require("dotenv").config("./env");
 const routes = require("./routes");
 
 //middleware requires
-const {authMiddleware} = require("./middleware/mw");
-let {LogMiddleware} = require("./middleware/logger");
+const { authMiddleware } = require("./middleware/mw");
+let { LogMiddleware } = require("./middleware/logger");
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //logging middleware
 
@@ -28,22 +28,23 @@ app.use("/public/templates", express.static("public/templates"));
 app.use("/help", routes.help);
 app.use("/module", routes.configuration);
 app.use("/module", routes.glances);
-app.use("/module", routes.sidebar);
-app.use("/module", routes.dialog);
+app.use("/module", routes.sidebars);
+app.use("/module", routes.dialogs);
 app.use("/actions", routes.actions);
 app.use("/messages", routes.messages);
+app.use("/bot", routes.bots);
 app.use("/conversations", routes.conversations);
 app.use("/media", routes.media);
 app.use("/webhooks", routes.webhooks);
 app.use("/users", routes.users);
 app.use("/lifecycle", routes.lifecycle);
 app.use("/custom", routes.custom);
-
+app.use("/modules", routes.bots);
 
 function envcheck() {
 	if (!process.env.CLIENT_ID || !process.env.CLIENT_SECRET || !process.env.NODE_ENV) {
 		console.error(
-			"Please set CLIENT_ID, CLIENT_SECRET and NODE_ENV as env variables in a .env or on the system."
+			"Please set CLIENT_ID, CLIENT_SECRET and NODE_ENV in a .env file or as system variables."
 		);
 		process.exit(1);
 	}
@@ -51,7 +52,7 @@ function envcheck() {
 	if (!process.env.PORT) process.env.PORT = 8080;
 }
 
-app.listen(process.env.PORT, function () {
+app.listen(process.env.PORT, function() {
 	envcheck();
 	console.log(`Starting Server @ port ${process.env.PORT}....`);
 	console.log(`Server now listening on port ${process.env.PORT} successfully!`);

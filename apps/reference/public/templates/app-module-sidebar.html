@@ -16,18 +16,30 @@
     <!-- Import the Stride Javascript API -->
     <script src='https://dev-lib.stride.com/javascript/simple-xdm.js'></script>
 
-    <!-- Import local examples.js file  -->
-    <script src="/public/js/sidebarFuncs.js"></script>
+    <!-- Import local JS file  -->
+    <script src="/public/js/sidebar.js"></script>
 
 </head>
 
 
 <body>
-<div id="response_wrapper" style="margin-bottom: 40px;">
-    <h4>Response</h4>
-    <div id="info" style="border-top: 1px solid rgba(0, 0, 0, 0.1);"></div>
+<div id="responses">
+    <table class="ak-grid">
+        <thead>
+        <tr class="">
+            <th>Stride API Response</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <div id="info">API responses will be shown here</div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
-<div id="tablediv" style="margin-left: 10px">
+<div id="tablediv">
     <table class="ak-grid">
         <thead>
         <tr class="">

@@ -8,17 +8,24 @@ let rp = require("request-promise");
 const util = require("util");
 
 /**
- * @name Media File Upload
+ * @name Media: Send a message with a file or image
  * @description
+ * To send a message with a file, first upload the file or image to the conversation, using the send a file endpoint.
+ * Regardless of media type, you must set the content type of the file to application/octet-stream in the Content-Type HTTP header.
  * Media file must be a base64 data uri string. Headers must set content-type of application/octet-stream.
- * @see {@link https://developer.atlassian.com/cloud/stride/learning/sending-media/ | Sending Media Messages }
+ *
+ * You can then send a message including a media node referencing the uploaded file
+ *
+ * @see {@link https://developer.atlassian.com/cloud/stride/rest/#rest-site-cloudId-conversation-conversationId-media-post |API Reference: Media Upload }
+ * @see {@link https://developer.atlassian.com/cloud/stride/learning/sending-media/ | How-to Guide }
+ * @see {@link https://developer.atlassian.com/cloud/stride/apis/document/nodes/mediaGroup/ | MediaGroup Message Node }
  *
  */
 router.get("/mediaMessage", async (req, res, next) => {
 	const loggerInfoName = "media_file_upload";
 
 	try {
-		const {cloudId, conversationId} = res.locals.context;
+		const { cloudId, conversationId } = res.locals.context;
 
 		let mediaUploadResponse = await sendMediaPromise(cloudId, conversationId).catch(err => {
 			logger.error(`${loggerInfoName} media file upload found error: ${err}`);
@@ -56,7 +63,7 @@ router.get("/mediaDelete", async (req, res, next) => {
 	const loggerInfoName = "media_delete";
 
 	try {
-		const {cloudId, conversationId} = res.locals.context;
+		const { cloudId, conversationId } = res.locals.context;
 
 		let mediaUploadResponse = await sendMediaPromise(cloudId, conversationId).catch(err => {
 			logger.error(`${loggerInfoName} found error: ${err}`);
@@ -86,7 +93,7 @@ function sendMediaPromise(cloudId, conversationId) {
 	return new Promise((resolve, reject) => {
 		const imgUrl = "https://media.giphy.com/media/L12g7V0J62bf2/giphy.gif";
 
-		https.get(imgUrl, function (downloadStream) {
+		https.get(imgUrl, function(downloadStream) {
 			sendMedia(cloudId, conversationId, "an_image2.jpg", downloadStream)
 				.then(JSON.parse)
 				.then(mediaUploadResponse => {

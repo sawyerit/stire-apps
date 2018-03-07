@@ -6,10 +6,9 @@ let url = require("url");
 let loggerConfig = {
 	name: "app-logger",
 	level: "debug",
-	stream: bformat({outputMode: "short"}),
+	stream: bformat({ outputMode: "short" }),
 
-	includesFn: function (req, res) {
-
+	includesFn: function(req, res) {
 		let shortUrl = url.parse(req.url).pathname;
 
 		return {
@@ -29,11 +28,11 @@ let loggerConfigMiddleare = {
 	streams: [
 		{
 			level: "debug",
-			stream: bformat({outputMode: "short"})
+			stream: bformat({ outputMode: "short" })
 		}
 	],
 
-	includesFn: function (req, res) {
+	includesFn: function(req, res) {
 		let shortUrl = url.parse(req.originalUrl).pathname;
 		return {
 			url: shortUrl
@@ -64,4 +63,4 @@ let loggerConfigMiddleare = {
 	]
 };
 
-module.exports = {logger, LogMiddleware: loggerConfigMiddleare};
+module.exports = { logger, LogMiddleware: loggerConfigMiddleare };
