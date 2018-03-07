@@ -1,5 +1,5 @@
 
-	$(document).ready(function () {
+$(document).ready(function () {
 
 	AP.register({
 
@@ -7,6 +7,7 @@
 			console.log(JSON.stringify(context));
 			$("#cloudId").val(context.cloudId);
 			$("#conversationId").val(context.conversationId);
+			$("#userId").val(context.userId);
 			if(parameters)
 				$("#parameters").val(JSON.stringify(parameters));
 			if(context.message)
