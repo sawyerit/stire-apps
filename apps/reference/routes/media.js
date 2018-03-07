@@ -8,9 +8,14 @@ let rp = require("request-promise");
 const util = require("util");
 
 /**
- * @name Media File Upload
+ * @name Media: Send a message with a file or image
  * @description
+ * To send a message with a file, first upload the file or image to the conversation, using the send a file endpoint.
+ * Regardless of media type, you must set the content type of the file to application/octet-stream in the Content-Type HTTP header.
  * Media file must be a base64 data uri string. Headers must set content-type of application/octet-stream.
+ *
+ * You can then send a message including a media node referencing the uploaded file
+ *
  * @see {@link https://developer.atlassian.com/cloud/stride/rest/#rest-site-cloudId-conversation-conversationId-media-post |API Reference: Media Upload }
  * @see {@link https://developer.atlassian.com/cloud/stride/learning/sending-media/ | How-to Guide }
  * @see {@link https://developer.atlassian.com/cloud/stride/apis/document/nodes/mediaGroup/ | MediaGroup Message Node }

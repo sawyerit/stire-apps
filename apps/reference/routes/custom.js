@@ -7,6 +7,9 @@ const logger = require("../middleware/logger").logger;
 const stride = require("../client");
 
 /**
+ * /**
+ * @name Custom: securing calls between the app's frontend and backend
+ * @description
  * Making an AJAX call from the app front-ent (sidebar, dialog, configuration dialog) to the app back-end in a secured way,
  * using JWT tokens generated via the Stride Javascript API
  * You can find the context for the request (cloudId, conversationId) in the JWT token

@@ -3,38 +3,8 @@ const app_name = process.env.APP_NAME || "Stride Reference App";
 
 /** @name Message Formatting
  @Description Using the adf-builder, create formatting accepted by the Stride editor.
- @example
- //require in the atlassian document format builder
- const { Document } = require('adf-builder');
-
- const doc = new Document();
- doc
- .paragraph()
- .text('Here is some ')
- .strong('bold test')
- .text(' and ')
- .em('text in italics')
- .text(' as well as ')
- .link(' a link', 'https://www.atlassian.com')
- .text(' , emojis ')
- .emoji(':smile:')
- .emoji(':rofl:')
- .emoji(':nerd:')
- .text(' and some code: ')
- .code('const i = 0;')
- .text(' and a bullet list');
- doc
- .bulletList()
- .textItem('With one bullet point')
- .textItem('And another');
- doc
- .panel('tip')
- .paragraph()
- .text('and an info panel with some text, with some more code below');
- doc.codeBlock('javascript').text('const i = 0;\nwhile(true) {\n  i++;\n}');
-
- return doc.toJSON();
  */
+
 module.exports.differentFormatTypes = () => {
 	const doc = new Document();
 
@@ -121,8 +91,9 @@ module.exports.helpMenu = () => {
 
 	var list = doc.bulletList();
 	list.textItem('Send a message containing the word "weather" and i will get the weather for you.');
-	list.textItem("Change the Room Name or Topic, watch what happens.");
+	list.textItem("Change the room name or topic, watch what happens.");
 	list.textItem("Open the sidebar for more things you can do with the Stride API.");
+	list.textItem("Click on the \"...\" menu next to any message and then \"Send to dialog\" or \"Send to service\"");
 
 	//todo: clean this up when the action mark is supported by the adf-builder
 	var openSidebar = {
@@ -137,7 +108,7 @@ module.exports.helpMenu = () => {
 						attrs: {
 							title: "open sidebar",
 							target: {
-								key: "reference-action-openSidebar"
+								key: "actionTarget-openSidebar"
 							}
 						}
 					}

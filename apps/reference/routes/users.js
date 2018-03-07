@@ -5,7 +5,7 @@ const stride = require("../client");
 const logger = require("../middleware/logger").logger;
 const util = require("util");
 /**
- * @name User Details
+ * @name Users: get user details
  * @description
  * Get a user's details like name, email, id, avatar url.
  */
@@ -44,6 +44,13 @@ router.get("/userDetails", async (req, res, next) => {
 	}
 });
 
+
+/**
+ * @name Users: mention a user in a message
+ * @description
+ * To mention a user, add a `mention` node to the message. You just need to specify the user's ID and Stride
+ * takes care of the rest
+ */
 router.get("/userMention", async (req, res, next) => {
 	const loggerInfoName = "user_mention";
 

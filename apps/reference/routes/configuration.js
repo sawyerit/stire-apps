@@ -8,6 +8,22 @@ const stride = require("../client");
 // In memory storage
 let configStore = {};
 
+/**
+ * @name Configuration pages
+ * @description
+ * You can add a configuration page for users to configure your app in the conversation it’s installed within.
+ * For example, for a to-do app, your app configuration can let users link a to-do list to the conversation, and select which notifications should be sent to the conversation
+ * Configuration pages are declared in the app descriptor as chat:configuration.
+ * @see {@link https://developer.atlassian.com/cloud/stride/learning/config-pages/  | Config Guide}
+ * @see {@link https://developer.atlassian.com/cloud/stride/learning/adding-config-pages/ | How-to Guide }
+ */
+
+/**
+ * @name Configuration page: UI
+ * @description
+ * This configuration UI will be loaded in an iframe in a dialog
+ */
+
 router.get("/config", (req, res, next) => {
 	let loggerInfoName = "config_state_template_fetch";
 
@@ -19,6 +35,14 @@ router.get("/config", (req, res, next) => {
 		next(err);
 	}
 });
+
+
+/**
+ * @name Configuration pages: configuration state
+ * @description
+ * The app's configuration state for a conversation (configured: true/false)
+ * If the configuration state is "false", then users will be prompted to configure the app before they can use it
+ */
 
 router.get("/config/state", cors(), async (req, res, next) => {
 	let loggerInfoName = "config_state";
@@ -41,14 +65,10 @@ router.get("/config/state", cors(), async (req, res, next) => {
 });
 
 /**
- * @name Config Data Fetch
+ * @name Configuration pages: Get/set configuration data
  * @description
- * Fetching the configuration data for a conversation.
- * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-app-module-chat-conversation-chat-configuration-key-state-get  | API Reference: Store Configuration }
- * @see {@link https://developer.atlassian.com/cloud/stride/learning/config-pages/  | Config Guide}
- * @see {@link https://developer.atlassian.com/cloud/stride/learning/adding-config-pages/ | How-to Guide }
+ * Configuration data is saved in your app's backend
  */
-
 router.get("/config/content", (req, res, next) => {
 	let loggerInfoName = "config_state_get";
 
@@ -67,14 +87,6 @@ router.get("/config/content", (req, res, next) => {
 	}
 });
 
-/**
- * @name Config Data Storage
- * @description
- * Storing the configuration data for a conversation.
- * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-app-module-chat-conversation-chat-configuration-key-state-post  |API Reference: Store Configuration }
- * @see {@link https://developer.atlassian.com/cloud/stride/learning/config-pages/ | Concept Guide}
- * @see {@link https://developer.atlassian.com/cloud/stride/learning/adding-config-pages/ | How-to Guide }
- */
 router.post("/config/content", async (req, res, next) => {
 	let loggerInfoName = "config_state_post";
 
@@ -86,7 +98,7 @@ router.post("/config/content", async (req, res, next) => {
 		opts.body = { context: { cloudId, conversationId }, configured: true };
 
 		//Call config update post endpoint
-		stride.api.config.config_update_post("reference-config", opts).then(() => {
+		stride.api.config.config_update_post("configuration-1", opts).then(() => {
 			res.sendStatus(204);
 			logger.info(`${loggerInfoName} outgoing successful.`);
 		});

@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	function init(event) {
 		$("#" + event.target.id).prop("disabled", true);
-		$("#info").text("");
+		$("#info").text("API responses will be shown here");
 	}
 
 	function success(event, data) {
@@ -18,14 +18,14 @@ $(document).ready(function() {
 	 * Open a dialog from the sidebar
 	 */
 	$("#openDialog").click(function() {
-		AP.dialog.open({ key: "reference-dialog" });
+		AP.dialog.open({ key: "dialog-1" });
 	});
 
 	/**
 	 * Open the app configuration from the sidebar
 	 */
 	$("#openConfig").click(function() {
-		AP.dialog.open({ key: "reference-dialog-config" });
+		AP.dialog.open({ key: "dialog-configuration" });
 	});
 
 	/**

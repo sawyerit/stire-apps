@@ -8,9 +8,10 @@ const util = require("util");
 const app_name = process.env.APP_NAME || "Stride Reference App";
 
 /**
- * @name Message Direct
+ * @name Messages: send a direct message to a user
  * @description
- * Send a direct message to a user.
+ * Since sending a message is done using a conversation ID, the the first step is to obtain the conversation ID for the direct conversation.
+ * You can then use the "send a message to a conversation" endpoint
  * @see {@link https://developer.atlassian.com/cloud/stride/rest/#rest-site-cloudId-conversation-user-userId-message-post | API Reference: Direct Messages }
  * @see {@link https://developer.atlassian.com/cloud/stride/learning/messages/ | Concept Guide }
  * @see {@link https://developer.atlassian.com/cloud/stride/learning/sending-direct-messages-to-users/| How-to Guide }
@@ -50,7 +51,7 @@ router.post("/direct", async (req, res, next) => {
 });
 
 /**
- * @name Message Text
+ * @name Messages: send a text message
  * @description
  * Send a plain text message.  Headers.Content-Type must be set to text/plain.
  * @see {@link https://developer.atlassian.com/cloud/stride/rest/#rest-site-cloudId-conversation-user-userId-message-post | API Reference: Messages }
@@ -89,7 +90,7 @@ router.post("/textFormat", async (req, res, next) => {
 });
 
 /**
- * @name Message Rich Format
+ * @name Messages: send a message with rich format
  * @description
  * Send a message in Rich Text Format.
  * @see {@link https://developer.atlassian.com/cloud/stride/rest/#rest-site-cloudId-conversation-user-userId-message-post | API Reference: Messages }
@@ -125,7 +126,7 @@ router.get("/richFormatMessage", async (req, res, next) => {
 });
 
 /**
- * @name Message Update
+ * @name Messages: update a message
  * @description
  * Update a message.
  * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-site-cloudId-conversation-conversationId-message-messageId-put | API Reference: Update Conversation Message }
@@ -184,7 +185,7 @@ router.post("/edit", async (req, res, next) => {
 });
 
 /**
- * @name Message Delete
+ * @name Messages: delete a message
  * @description
  * Delete an existing message.
  * @see {@link https://developer.atlassian.com/cloud/stride/rest/#api-site-cloudId-conversation-conversationId-message-messageId-delete | API Reference: Delete Conversation Message }

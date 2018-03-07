@@ -14,20 +14,20 @@ module.exports.actionCard = () => {
 	card
 		.action()
 		.title("Call Service")
-		.target({ key: "reference-action-callService" })
+		.target({ key: "actionTarget-handleCardAction" })
 		.parameters({ returnError: false, then: "done" });
 
 	card
 		.action()
 		.title("Open Dialog")
-		.target({ key: "reference-action-openDialog" });
+		.target({ key: "actionTarget-openDialog" });
 
 	//Call service, then open sidebar
 
 	card
 		.action()
 		.title("Open SideBar")
-		.target({ key: "reference-action-openSidebar" });
+		.target({ key: "actionTarget-openSidebar" });
 
 	card.context(`${app_name}: Action Cards Example`).icon({
 		url: "https://image.ibb.co/fPPAB5/Stride_White_On_Blue.png",
@@ -47,12 +47,12 @@ module.exports.updateCard = () => {
 	card
 		.action()
 		.title("Ack")
-		.target({ key: "reference-action-callService-updateMessage" })
+		.target({ key: "reference-action-updateCard" })
 		.parameters({ incidentAction: "ack" });
 	card
 		.action()
 		.title("Resolve")
-		.target({ key: "reference-action-callService-updateMessage" })
+		.target({ key: "reference-action-updateCard" })
 		.parameters({ incidentAction: "resolve" });
 	card.context("DevOps / Incidents").icon({
 		url: "https://image.ibb.co/fPPAB5/Stride_White_On_Blue.png",
@@ -61,3 +61,8 @@ module.exports.updateCard = () => {
 
 	return doc.toJSON();
 };
+
+
+module.exports.ackMessage = (messageToAck) => {
+	messageToAck.content.unshift({"type":"paragraph","content":[{"type":"text","text":"You just triggered an action for:"}]});
+}

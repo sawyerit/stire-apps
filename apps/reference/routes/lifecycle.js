@@ -7,12 +7,13 @@ const logger = require("../middleware/logger").logger;
 const stride = require("../client");
 
 /**
- *  @name Install
+ *  @name Lifecycle: installation events
  *  @see {@link https://developer.atlassian.com/cloud/stride/blocks/app-lifecycle/ | Installation Events }
  *  @description
  *
- *  When a user installs your app, Stride calls this path configured in the lifecycle object of the descriptor.json.
- *  The server route must match the descriptor entry.
+ *  In order to be granted access to a conversation (for instance, to send messages) an app must be installed by a user in the conversation.
+ *  Your app can be notified whenever a user installs or uninstalls it in a conversation. Stride makes a POST request that will be made to the lifecycle URL defined in the app descriptor.
+ *  Lifecycle events behave essentially like webhooks.
  **/
 router.post("/installed", async function(req, res, next) {
 	const loggerInfoName = "app_install";
@@ -65,12 +66,16 @@ router.post("/installed", async function(req, res, next) {
 });
 
 /**
- *  @name Descriptor
+ *  @name Lifecycle: app descriptor
  *  @see {@link https://developer.atlassian.com/cloud/stride/blocks/app-descriptor/ | Descriptor Requests }
  *  @see {@link https://developer.atlassian.com/cloud/stride/blocks/app-lifecycle/ | Lifecycle Events }
  *  @description
  *
- *  The descriptor file is the map for your app that Stride uses to figure out where things live, such as routes, images, etc.
+ *  The app descriptor is a JSON file that describes how Stride should communicate with the app.
+ *  The descriptor includes general information for the app, as well as the modules that the app wants to use.
+ *  The app descriptor serves as the glue between the app and Stride. When a user installs an app,
+ *  what they are really doing is installing this descriptor file.
+ *
  *  Stride needs to be able to retrieve this from your app server.
  **/
 router.get("/descriptor", function(req, res, next) {

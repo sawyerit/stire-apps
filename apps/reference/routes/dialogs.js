@@ -4,17 +4,18 @@ const logger = require("../middleware/logger").logger;
 const moduleName = "module:dialog";
 
 /**
- *  @name Dialog
+ *  @name Dialogs
  *  @see {@link https://developer.atlassian.com/cloud/stride/apis/modules/chat/dialog/ | API Reference: Dialogs }
  *  @see {@link https://developer.atlassian.com/cloud/stride/learning/dialogs/ | Concept Guide }
  *  @see {@link https://developer.atlassian.com/cloud/stride/learning/adding-dialogs | How-to Guide }
- *  @description  Setup your url route and dialog key in the descriptor.json file. </b>
+ *  @description
+ *  To create a dialog, add a chat:dialog module to the app descriptor.
+ *  The dialog will open when it is the target of an action and the action is fired, or from another module using the JavaScript API.
  *
- *  descriptor.json
  ```
  "chat:dialog": [
  {
-   "key": "reference-dialog",
+   "key": "dialog-1",
    "title": {
 	 "value": "App Dialog"
    },
