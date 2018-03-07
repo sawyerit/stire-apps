@@ -12,3 +12,4 @@ module.exports.lifecycle = require("./lifecycle");
 module.exports.custom = require("./custom");
 module.exports.help = require("./help");
 module.exports.bots = require("./bots");
+module.exports.experimental = require("./experimental");

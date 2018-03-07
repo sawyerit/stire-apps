@@ -192,6 +192,12 @@
         "callService": {
           "url": "/actions/action/updateCard"
         }
+      },
+      {
+        "key": "actionTarget-handleInlineMessageAction",
+        "callService": {
+          "url": "/experimental/action/handleInlineMessageAction"
+        }
       }
     ]
   }

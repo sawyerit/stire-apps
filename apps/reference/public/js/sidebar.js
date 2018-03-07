@@ -349,4 +349,24 @@ $(document).ready(function() {
 			});
 		});
 	});
+
+	/**   <------------------ Experimental / unsupported ------------> */
+
+	$("#inlineMessageAction").click(function(event) {
+		init(event);
+		AP.auth.withToken(function(err, token) {
+			$.ajax({
+				type: "POST",
+				url: "/experimental/inlineMessageAction",
+				headers: { Authorization: "Bearer " + token },
+				dataType: "json",
+				success: function(data) {
+					success(event, data);
+				},
+				error: function(data) {
+					error(event, data);
+				}
+			});
+		});
+	});
 });

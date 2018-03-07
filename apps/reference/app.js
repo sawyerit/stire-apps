@@ -39,7 +39,7 @@ app.use("/webhooks", routes.webhooks);
 app.use("/users", routes.users);
 app.use("/lifecycle", routes.lifecycle);
 app.use("/custom", routes.custom);
-app.use("/modules", routes.bots);
+app.use("/experimental", routes.experimental);
 
 function envcheck() {
 	if (!process.env.CLIENT_ID || !process.env.CLIENT_SECRET || !process.env.NODE_ENV) {
