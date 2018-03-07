@@ -68,7 +68,7 @@ router.post("/mention", async (req, res, next) => {
  *  Stride makes a POST to the URLs specified in the app's descriptor, including the message and its context in the request
  *
  **/
-router.post("/directmessage", async (req, res, next) => {
+router.post("/directMessage", async (req, res, next) => {
 	//for webhooks send the response asap or the messages will get replayed up to 3 times
 	res.sendStatus(204);
 	let loggerInfoName = "bot_direct_message";

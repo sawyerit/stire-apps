@@ -9,13 +9,13 @@ let helpers = require("../helpers");
 const { Document } = require("adf-builder");
 
 
-router.options("/action/reference-messageAction", cors(), (req, res) => {
+router.options("/action/handleMessage", cors(), (req, res) => {
   res.sendStatus(200);
 });
-router.options("/action/reference-service", cors(), (req, res) => {
+router.options("/action/handleCardAction", cors(), (req, res) => {
   res.sendStatus(200);
 });
-router.options("/action/reference-service-updateMessage", cors(), (req, res) => {
+router.options("/action/updateCard", cors(), (req, res) => {
   res.sendStatus(200);
 });
 
@@ -228,7 +228,7 @@ router.post("/action/updateCard", async (req, res, next) => {
       card
         .action()
         .title("Resolve")
-        .target({key: "reference-action-updateCard"})
+        .target({key: "actionTarget-updateCard"})
         .parameters({incidentAction: "resolve"});
     }
 
@@ -240,7 +240,7 @@ router.post("/action/updateCard", async (req, res, next) => {
       card
         .action()
         .title("Reopen")
-        .target({key: "reference-action-updateCard"})
+        .target({key: "actionTarget-updateCard"})
         .parameters({incidentAction: "reopen"});
     }
 
@@ -252,12 +252,12 @@ router.post("/action/updateCard", async (req, res, next) => {
       card
         .action()
         .title("Ack")
-        .target({key: "reference-action-updateCard"})
+        .target({key: "actionTarget-updateCard"})
         .parameters({incidentAction: "ack"});
       card
         .action()
         .title("Resolve")
-        .target({key: "reference-action-updateCard"})
+        .target({key: "actionTarget-updateCard"})
         .parameters({incidentAction: "resolve"});
     }
 

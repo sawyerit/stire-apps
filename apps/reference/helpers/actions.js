@@ -20,7 +20,7 @@ module.exports.actionCard = () => {
 	card
 		.action()
 		.title("Open Dialog")
-		.target({ key: "actionTarget-openDialog" });
+		.target({ key: "actionTarget-sendToDialog" });
 
 	//Call service, then open sidebar
 
@@ -47,12 +47,12 @@ module.exports.updateCard = () => {
 	card
 		.action()
 		.title("Ack")
-		.target({ key: "reference-action-updateCard" })
+		.target({ key: "actionTarget-updateCard" })
 		.parameters({ incidentAction: "ack" });
 	card
 		.action()
 		.title("Resolve")
-		.target({ key: "reference-action-updateCard" })
+		.target({ key: "actionTarget-updateCard" })
 		.parameters({ incidentAction: "resolve" });
 	card.context("DevOps / Incidents").icon({
 		url: "https://image.ibb.co/fPPAB5/Stride_White_On_Blue.png",
