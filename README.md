@@ -9,23 +9,10 @@ the Stride API. To work with a smaller app, checkout out the hello app.
 stride-apps-reference
 |----apps  
 |      |
-|------reference           
-|      |     |--package.json
-|      |     |--app.js
-|      |     |--ref-descriptor.json
-|      |     |--.env
-|      |     |--public
-|------hello-|   
-|      |     |--package.json
-|      |     |--app.js
-|      |     |--hello-descriptor.json
-|      |     |--.env
-|      |_____|--public
-|    src               
-|      |--package.json
-|      |--api
-|      |--lib
-|      |--index.js
+|------hello: hello world example
+|------reference: reference implementation of a Stride app showcasing the API
+|      |          
+|----src: Stride API client in Javascript
      
 ```
 
@@ -38,7 +25,7 @@ cd stride-apps-reference
  
 ### Install dependencies
  
-Run the install script.  This installs the packages for the docs, reference and the stride client.  
+Run the install script.  This installs the packages for the apps reference and the Stride client.  
  
 ```
 ./install.sh
@@ -60,13 +47,13 @@ Next, [create a Stride app](https://developer.atlassian.com/apps/create) in deve
 ### Update .env
 
 In the apps/reference directory, rename the **.env_example** file to **.env**. 
-In your .env file, carry over the client id and client secret from your app dashboard in the previous step.
+In your .env file, carry over the client id {client_id} and client secret {client_secret} from your app dashboard in the previous step.
 
 ```
 // working directory: stride-apps-reference/apps/reference/.env
   
-CLIENT_ID=0MIiq3bSeeWa4yeqcdlxd1YouFb2XdTWzofTN
-CLIENT_SECRET=pMU6ideX8MxirSpurspxpFvXlvnsbX38_vM0aci7PwBYpt9m4N-Str4w
+CLIENT_ID={client_id}
+CLIENT_SECRET={client_secret}
 NODE_ENV=production
 PORT=8080
 ```
@@ -100,7 +87,7 @@ http://localhost:8080/lifecycle/descriptor // descriptor.json should load in bro
 
 * Navigate to your [My Apps](https://developer.atlassian.com/apps) page.
 * Click to open the app and then click the **Install** tab.
-* Enter your app descriptor URL, {ngrokURL}/descriptor, in the **Descriptor URL** field. The URL you enter should look similar to https://740a1ad5.ngrok.io/descriptor.
+* Enter your app descriptor URL, {ngrokURL}/descriptor, in the **Descriptor URL** field. The URL you enter should look similar to https://740a1ad5.ngrok.io/lifecycle/descriptor.
 * Click **Refresh**. When the app descriptor is installed you will see a **The descriptor has been updated successfully!** message displayed.
 
 ### Install the app in Stride 
