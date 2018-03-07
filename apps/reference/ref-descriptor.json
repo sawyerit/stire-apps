@@ -13,7 +13,7 @@
           "url": "/bot/mention"
         },
         "directMessage": {
-          "url": "/bot/directmessage"
+          "url": "/bot/directMessage"
         }
       }
     ],
@@ -26,11 +26,11 @@
     ],
     "chat:inputAction": [
       {
-        "key": "inputaction-opendialog",
+        "key": "inputAction-openDialog",
         "name": {
           "value": "Open App Dialog"
         },
-        "target": "actionTarget-openDialog"
+        "target": "actionTarget-sendToDialog"
       }
     ],
     "chat:dialog": [
@@ -42,29 +42,23 @@
         "options": {
           "size": {
             "width": "500px",
-            "height": "300px"
+            "height": "500px"
           },
           "primaryAction": {
-            "key": "action-appendMessage",
+            "key": "dialogAction-openSidebar",
             "name": {
-              "value": "Append Message"
+              "value": "Open Sidebar"
             }
           },
           "secondaryActions": [
             {
-              "key": "dialogaction-closeDialog",
+              "key": "dialogAction-closeDialog",
               "name": {
                 "value": "Close"
               }
             },
             {
-              "key": "dialogaction-openSidebar",
-              "name": {
-                "value": "Open Sidebar"
-              }
-            },
-            {
-              "key": "dialogaction-disableButton",
+              "key": "dialogAction-disableButton",
               "name": {
                 "value": "Disable Button"
               }
@@ -130,14 +124,14 @@
     ],
     "chat:messageAction": [
       {
-        "key": "messageaction-opendialog",
+        "key": "messageAction-openDialog",
         "name": {
           "value": "Send to dialog"
         },
-        "target": "actionTarget-openDialog"
+        "target": "actionTarget-sendToDialog"
       },
       {
-        "key": "messageaction-handlemessage",
+        "key": "messageAction-handleMessage",
         "name": {
           "value": "Send to service"
         },
@@ -176,7 +170,7 @@
         }
       },
       {
-        "key": "actionTarget-openDialog",
+        "key": "actionTarget-sendToDialog",
         "openDialog": {
           "key": "dialog-1"
         }
@@ -194,7 +188,7 @@
         }
       },
       {
-        "key": "reference-action-updateCard",
+        "key": "actionTarget-updateCard",
         "callService": {
           "url": "/actions/action/updateCard"
         }

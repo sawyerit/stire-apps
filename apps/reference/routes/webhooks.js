@@ -22,7 +22,7 @@ const app_name = process.env.APP_NAME || "Stride Reference App";
  * //descriptor.json entry to listen to conversation events
  chat:webhook
  {
-   "key": "reference-webhook-conversation",
+   "key": "webhook-conversationEvents",
    "event": "conversation:updates",
    "url": "/webhooks/conversationEvents"
  }
