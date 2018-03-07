@@ -236,6 +236,24 @@ $(document).ready(function() {
 		});
 	});
 
+	$("#actionMark").click(function(event) {
+		init(event);
+		AP.auth.withToken(function(err, token) {
+			$.ajax({
+				type: "POST",
+				url: "/actions/actionMark",
+				headers: { Authorization: "Bearer " + token },
+				dataType: "json",
+				success: function(data) {
+					success(event, data);
+				},
+				error: function(data) {
+					error(event, data);
+				}
+			});
+		});
+	});
+
 	/** <----- Conversations ------ > */
 
 	$("#getConversationDetails").click(function(event) {

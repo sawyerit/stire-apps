@@ -292,4 +292,42 @@ router.post("/action/updateCard", async (req, res, next) => {
   }
 });
 
+
+/**
+ * @name Actions: Message with a link that triggers an action
+ * @see {@link https://developer.atlassian.com/cloud/stride/learning/actions/ | Concept Guide}
+ * @see {@link https://developer.atlassian.com/cloud/stride/learning/adding-actions/ | How-to Guide}
+ */
+
+router.post("/actionMark", cors(), async (req, res, next) => {
+  const loggerInfoName = "send_message_with_actionmark";
+
+  try {
+    logger.info(`${loggerInfoName} incoming with request body ${util.format(req.body)}`);
+
+    const { cloudId, conversationId } = res.locals.context;
+    let actionMarkMessage = helpers.actions.actionMarkMessage();
+
+    let opts = {
+      body: actionMarkMessage,
+      headers: {"Content-Type": "Application/Json"}
+    };
+
+    let response = stride.api.messages
+      .message_send_conversation(cloudId, conversationId, opts)
+      .catch(err => {
+        logger.error(`${loggerInfoName} sending the message found error: ${err}`);
+      });
+
+    logger.info(
+      `${loggerInfoName} sending the message successful with response ${util.format(response)}`
+    );
+    res.sendStatus(204);
+  } catch (err) {
+    res.sendStatus(500);
+    logger.error(`${loggerInfoName} found an error: ${err} `);
+    next(err);
+  }
+});
+
 module.exports = router;

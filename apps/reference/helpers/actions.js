@@ -66,3 +66,32 @@ module.exports.updateCard = () => {
 module.exports.ackMessage = (messageToAck) => {
 	messageToAck.content.unshift({"type":"paragraph","content":[{"type":"text","text":"You just triggered an action for:"}]});
 }
+
+module.exports.actionMarkMessage = () => {
+	return {
+		"version": 1,
+		"type": "doc",
+		"content": [
+			{
+				"type": "paragraph",
+				"content": [
+					{
+						"type": "text",
+						"text": "Click to open the app's dialog",
+						"marks": [
+							{
+								"type": "action",
+								"attrs": {
+									"title": "open dialog",
+									"target": {
+										"key": "actionTarget-sendToDialog"
+									}
+								}
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}
