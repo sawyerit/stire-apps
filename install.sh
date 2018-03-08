@@ -28,7 +28,7 @@ cd "$REFAPP_DIR" && npm i
 
 hello_install() {
 echo "${CGREEN}Installing hello application packages.."
-cd "$REFAPP_DIR" && npm i
+cd "$SIMPLE_APP_DIR" && npm i
  echo "Done with installation for hello app packages"
 }
 
