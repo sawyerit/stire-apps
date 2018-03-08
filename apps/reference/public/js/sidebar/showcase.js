@@ -1,3 +1,8 @@
+
+/**
+ * Reference documentation for the Stride Javascript API: https://developer.atlassian.com/cloud/stride/apis/jsapi/about-javascript-api/
+ */
+
 $(document).ready(function() {
 	function init(event) {
 		$("#" + event.target.id).prop("disabled", true);
@@ -15,6 +20,9 @@ $(document).ready(function() {
 	}
 
 	/** <----- Client-side Javascript API ------ > */
+	/**
+	 * Reference documentation for the Stride Javascript API: https://developer.atlassian.com/cloud/stride/apis/jsapi/about-javascript-api/
+	 */
 
 	$("#openDialog").click(function() {
 		AP.action.openTarget({

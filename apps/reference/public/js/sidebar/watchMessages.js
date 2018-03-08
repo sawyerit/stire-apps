@@ -1,5 +1,9 @@
-$(document).ready(function() {
+/**
+ * Reference documentation for the Stride Javascript API: https://developer.atlassian.com/cloud/stride/apis/jsapi/about-javascript-api/
+ */
 
+
+$(document).ready(function() {
 
 	/**
 	 * Listen to messages received in the room from the Javascript API
