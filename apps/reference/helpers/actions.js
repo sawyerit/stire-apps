@@ -7,7 +7,7 @@ module.exports.actionCard = () => {
 
 	let card = doc
 		.applicationCard("Action Cards")
-		.description("See the triple dot ( ellipsis) on this card for actions.");
+		.description("See the triple dot ( ellipsis) on this card for more actions.");
 
 	//Call a service points to a target URL /action/reference-service
 	// pass parameters here to that route.
@@ -20,7 +20,8 @@ module.exports.actionCard = () => {
 	card
 		.action()
 		.title("Open Dialog")
-		.target({ key: "actionTarget-sendToDialog" });
+		.target({ key: "actionTarget-sendToDialog" })
+		.parameters({"custom-param-from-card": "some value"});
 
 	//Call service, then open sidebar
 
@@ -85,6 +86,9 @@ module.exports.actionMarkMessage = () => {
 									"title": "open dialog",
 									"target": {
 										"key": "actionTarget-sendToDialog"
+									},
+									"parameters": {
+										"custom-param-from-actionmark": "Some value"
 									}
 								}
 							}
