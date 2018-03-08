@@ -3,8 +3,15 @@ $(document).ready(function () {
 
 	AP.register({
 
+		/**
+		 * Anytime an actionTarget is called, your app can register to it client-site
+		 * using this approach
+		 * Source is the key of the component the actionTarget was triggered from
+		 * Target is the actionTarget key
+		 * Context is all contextual informatin about the action
+		 * Parameters are all custom parameters passed to the actionTarget
+		 */
 		"actionTarget-sendToDialog": function ({source, target, context, parameters}) {
-			console.log(JSON.stringify(context));
 			$("#cloudId").val(context.cloudId);
 			$("#conversationId").val(context.conversationId);
 			$("#userId").val(context.userId);
@@ -15,6 +22,8 @@ $(document).ready(function () {
 
 		},
 
+		/** This is how you handle dialog buttons
+		 */
 		"dialogAction-openSidebar": function () {
 			AP.sidebar.open({key: 'sidebar-1'});
 		},
