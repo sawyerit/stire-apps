@@ -4,7 +4,8 @@
   "description": "Main Package file. Builds projects, docs, runs tests, etc.",
   "main": "Stride API Reference Main",
   "scripts": {
-    "install-packages": "./install.sh"
+    "rm": "rm -rf apps/reference/node_modules apps/hello/node_modules src/node_modules",
+    "install": "./install.sh"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,6 @@
   "author": "",
   "license": "ISC",
   "homepage": "https://bitbucket.org/atlassian/stride-apps-reference#readme",
-  "dependencies": {}
+  "dependencies": {
+  }
 }
