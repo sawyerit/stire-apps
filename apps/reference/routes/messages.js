@@ -201,7 +201,7 @@ router.post("/delete", async (req, res, next) => {
 
 		// Create and Send Text Message
 		let textMessageOpts = {
-			body: `${app_name}: This message is about to be delete, watch out!`,
+			body: `${app_name}: This message is about to be deleted, watch out!`,
 			headers: { "Content-Type": "text/plain" }
 		};
 

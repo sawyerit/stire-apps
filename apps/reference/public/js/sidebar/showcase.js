@@ -396,4 +396,22 @@ $(document).ready(function() {
 			});
 		});
 	});
+
+	$("#inlineMessageSelect").click(function(event) {
+		init(event);
+		AP.auth.withToken(function(err, token) {
+			$.ajax({
+				type: "POST",
+				url: "/experimental/inlineMessageSelect",
+				headers: { Authorization: "Bearer " + token },
+				dataType: "json",
+				success: function(data) {
+					success(event, data);
+				},
+				error: function(data) {
+					error(event, data);
+				}
+			});
+		});
+	});
 });

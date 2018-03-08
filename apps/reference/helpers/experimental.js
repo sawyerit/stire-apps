@@ -33,7 +33,7 @@ module.exports.messageWithInlineActions = () => {
                   "extensionKey": "action",
                   "parameters": {
                     "title": "Approve",
-                    "appearance": "default",
+                    "appearance": "primary",
                     "action": {
                       "target": {
                         "key": "actionTarget-handleInlineMessageAction"
@@ -86,5 +86,81 @@ module.exports.inlineActionResponseMessage = (userId, reason) => {
     .mention(userId)
   doc.paragraph()
     .em("Note: the contract of this node will change soon. Also, the target solution supports loading/error states")
+  return doc.toJSON();
+}
+
+module.exports.messageWithInlineSelect = () => {
+
+  const document = {
+    "version": 1,
+    "type": "doc",
+    "content": [
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "text": "What should I do next?"
+          },
+          {
+            "type": "inlineExtension",
+            "attrs": {
+              "extensionType": "com.atlassian.stride",
+              "extensionKey": "select",
+              "parameters": {
+                "key": "nextAction",
+                "title": "Select an action",
+                "source": "custom",
+                "data": {
+                  "value": "",
+                  "options": [
+                    {
+                      value: "openSidebar",
+                      title: "Open the showcase sidebar"
+                    },
+                    {
+                      value: "openDialog",
+                      title: "Open a dialog"
+                    },
+                    {
+                      value: "openHighlights",
+                      title: "Open room highlights"
+                    },
+                    {
+                      value: "openRoom",
+                      title: "Create and open a room"
+                    },
+                    {
+                      value: "openFiles",
+                      title: "Open room files and links"
+                    }
+                  ]
+                },
+                "action": {
+                  "target": {
+                    "key": "actionTarget-handleInlineMessageSelect"
+                  },
+                  "parameters": {
+                    "key": "nextAction"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+
+  return document;
+}
+
+
+module.exports.inlineSelectResponseMessage = () => {
+
+  const doc = new Document();
+  doc
+    .paragraph()
+    .text("Done. You can try again.");
   return doc.toJSON();
 }

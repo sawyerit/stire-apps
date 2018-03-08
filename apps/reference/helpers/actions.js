@@ -10,27 +10,26 @@ module.exports.actionCard = () => {
 		.description("See the triple dot ( ellipsis) on this card for more actions.");
 
 	//Call a service points to a target URL /action/reference-service
-	// pass parameters here to that route.
 	card
 		.action()
-		.title("Call Service")
-		.target({ key: "actionTarget-handleCardAction" })
-		.parameters({ returnError: false, then: "done" });
+		.title("Call service")
+		.target({ key: "actionTarget-handleCardAction" });
 
 	card
 		.action()
-		.title("Open Dialog")
+		.title("Open dialog")
 		.target({ key: "actionTarget-sendToDialog" })
 		.parameters({"custom-param-from-card": "some value"});
 
-	//Call service, then open sidebar
 
+	//Call a service, then open a dialog
 	card
-		.action()
-		.title("Open SideBar")
-		.target({ key: "actionTarget-openSidebar-showcase" });
+			.action()
+			.title("Call service then open dialog")
+			.target({ key: "actionTarget-handleCardAction" })
+			.parameters({ then: 'openDialog' });
 
-	card.context(`${app_name}: Action Cards Example`).icon({
+	card.context(`${app_name}: Action cards example`).icon({
 		url: "https://image.ibb.co/fPPAB5/Stride_White_On_Blue.png",
 		label: "Stride"
 	});

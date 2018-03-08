@@ -28,7 +28,7 @@
       {
         "key": "inputAction-openDialog",
         "name": {
-          "value": "Open App Dialog"
+          "value": "Open dialog"
         },
         "target": "actionTarget-sendToDialog"
       }
@@ -227,6 +227,12 @@
         "key": "actionTarget-updateCard",
         "callService": {
           "url": "/actions/action/updateCard"
+        }
+      },
+      {
+        "key": "actionTarget-handleInlineMessageSelect",
+        "callService": {
+          "url": "/experimental/action/handleInlineMessageSelect"
         }
       },
       {

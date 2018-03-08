@@ -62,67 +62,20 @@ router.post("/action/handleCardAction", cors(), async (req, res, next) => {
     const { cloudId, conversationId } = res.locals.context;
     logger.info(`${loggerInfoName} incoming call for ${conversationId}`);
 
-    const parameters = req.body.parameters;
-
     let response = {
       nextAction: {}
     };
 
-    if (parameters.returnError) {
-      response.error = "Things failed because of some reason";
-    } else {
-      response.message = "Done!";
-    }
-
-    if (parameters) {
-      if (parameters.then) {
-        if (parameters.then === "open sidebar") {
-          response.nextAction = {
-            target: {
-              key: "actionTarget-openSidebar-showcase"
-            }
-          };
-        }
-        if (parameters.then === "open dialog") {
-          response.nextAction = {
-            target: {
-              openDialog: {
-                key: "dialog-1"
-              }
-            }
-          };
-        }
-        if (parameters.then === "open conversation") {
-          response.nextAction = {
-            target: {
-              openConversation: {
-                conversationId: parameters.conversationId
-              }
-            }
-          };
-        }
-        if (parameters.then === "open highlights") {
-          response.nextAction = {
-            target: {
-              openHighlights: {}
-            }
-          };
-        }
-        if (parameters.then === "open files and links") {
-          response.nextAction = {
-            target: {
-              openFilesAndLinks: {}
-            }
-          };
+    const parameters = req.body.parameters;
+    if (parameters.then === 'openDialog')
+      response.nextAction = {
+        target: {
+          key: "actionTarget-sendToDialog"
         }
       }
-    }
 
-    if (parameters.returnError) {
-      res.sendStatus(403);
-    } else {
-      res.json(response);
-    }
+    res.json(response);
+
   } catch (err) {
     logger.error(`${loggerInfoName}:action error: ${err}`);
     res.sendStatus(500);
