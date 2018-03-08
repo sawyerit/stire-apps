@@ -15,7 +15,7 @@ const moduleName = "module:sidebar";
  *
  * ``` "chat:sidebar": [
  *     {
- * 		    "key": "sidebar-1",
+ * 		    "key": "sidebar-showcase",
  * 		    "name": {
  * 		      "value": "App Sidebar"
  * 		    },
@@ -26,8 +26,13 @@ const moduleName = "module:sidebar";
  * ```
  **/
 
-router.get("/sidebar", cors(), (req, res) => {
-	res.redirect("/public/templates/app-module-sidebar.html");
+router.get("/sidebar/showcase", cors(), (req, res) => {
+	res.redirect("/public/templates/sidebar/showcase.html");
+	logger.info(`${moduleName} redirect successful`);
+});
+
+router.get("/sidebar/watchMessages", cors(), (req, res) => {
+	res.redirect("/public/templates/sidebar/watchMessages.html");
 	logger.info(`${moduleName} redirect successful`);
 });
 

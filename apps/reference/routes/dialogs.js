@@ -31,7 +31,7 @@ const moduleName = "module:dialog";
 ```
 **/
 router.get("/dialog", function(req, res) {
-	res.redirect("/public/templates/app-module-dialog.html");
+	res.redirect("/public/templates/dialog.html");
 	logger.info(`${moduleName} redirect successful`);
 });
 

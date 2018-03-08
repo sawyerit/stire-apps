@@ -1,3 +1,8 @@
+
+/**
+ * Reference documentation for the Stride Javascript API: https://developer.atlassian.com/cloud/stride/apis/jsapi/about-javascript-api/
+ */
+
 $(document).ready(function() {
 	function init(event) {
 		$("#" + event.target.id).prop("disabled", true);
@@ -15,6 +20,9 @@ $(document).ready(function() {
 	}
 
 	/** <----- Client-side Javascript API ------ > */
+	/**
+	 * Reference documentation for the Stride Javascript API: https://developer.atlassian.com/cloud/stride/apis/jsapi/about-javascript-api/
+	 */
 
 	$("#openDialog").click(function() {
 		AP.action.openTarget({
@@ -26,12 +34,20 @@ $(document).ready(function() {
 			}
 		});
 
+		// You can also use AP.dialog.open({key: "dialog-1"});
 	});
 
 	$("#openConfig").click(function() {
-		AP.dialog.open({ key: "dialog-configuration" });
+		AP.action.openTarget({
+			"target": {
+				"key": "actionTarget-openConfiguration"
+			}
+		});
 	});
 
+	/**
+	 * Set the body of the chat input box
+	 */
 	$("#setMessageBody").click(function() {
 		AP.chat.setMessageBody({
 					"version": 1,
@@ -158,6 +174,14 @@ $(document).ready(function() {
 					error(event, data);
 				}
 			});
+		});
+	});
+
+	$("#listenToMessages").click(function(event) {
+		AP.action.openTarget({
+			"target": {
+				"key": "actionTarget-openSidebar-watchMessages"
+			}
 		});
 	});
 

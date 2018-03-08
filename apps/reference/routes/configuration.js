@@ -28,7 +28,7 @@ router.get("/config", (req, res, next) => {
 	let loggerInfoName = "config_state_template_fetch";
 
 	try {
-		res.redirect("/public/templates/app-module-config.html");
+		res.redirect("/public/templates/configuration.html");
 		logger.info(`${loggerInfoName} redirect successful`);
 	} catch (err) {
 		logger.error(`${loggerInfoName} error found: ${err}`);
