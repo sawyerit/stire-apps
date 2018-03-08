@@ -25,6 +25,7 @@ $(document).ready(function() {
 				"custom-parameter": "custom parameter value"
 			}
 		});
+
 	});
 
 	$("#openConfig").click(function() {

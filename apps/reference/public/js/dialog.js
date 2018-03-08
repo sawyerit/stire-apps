@@ -15,18 +15,18 @@ $(document).ready(function () {
 
 		},
 
-		"dialogAction-openSidebar": function ({source, target, context, parameters}) {
+		"dialogAction-openSidebar": function () {
 			AP.sidebar.open({key: 'sidebar-1'});
 		},
 
-		"dialogAction-disableButton": function ({source, target, context, parameters}) {
+		"dialogAction-disableButton": function () {
 			AP.dialog.disableActions();
 			setTimeout(function () {
 				AP.dialog.enableActions();
 			}, 1000);
 		},
 
-		"dialogAction-closeDialog": function ({source, target, context, parameters}) {
+		"dialogAction-closeDialog": function () {
 			AP.dialog.close();
 		},
 

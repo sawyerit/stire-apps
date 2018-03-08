@@ -20,7 +20,7 @@ router.options("/action/updateCard", cors(), (req, res) => {
 });
 
 /**
- * @name Actions: Message with a card
+ * @name Actions: message with a card
  * @see {@link https://developer.atlassian.com/cloud/stride/learning/actions/ | Concept Guide}
  * @see {@link https://developer.atlassian.com/cloud/stride/learning/adding-actions/ | How-to Guide}
  */
