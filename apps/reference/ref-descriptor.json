@@ -206,6 +206,9 @@
         "key": "actionTarget-sendToDialog",
         "openDialog": {
           "key": "dialog-1"
+        },
+        "parameters": {
+          "custom-param-from-descriptor": "Some value"
         }
       },
       {
