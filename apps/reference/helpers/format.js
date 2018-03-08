@@ -85,30 +85,29 @@ module.exports.eventUpdateMessage = (eventName, message) => {
 	return doc.toJSON();
 };
 
-module.exports.helpMenu = () => {
-	const doc = new Document();
-	doc.paragraph().strong(`${app_name} Help Menu`);
-
+function addHelpMessage(doc) {
+	doc.paragraph().strong("Help menu");
 	var list = doc.bulletList();
 	list.textItem('Send a message containing the word "weather" and i will get the weather for you.');
 	list.textItem("Change the room name or topic, watch what happens.");
-	list.textItem("Open the sidebar for more things you can do with the Stride API.");
+	list.textItem("Placeholder");
+	list.textItem("Placeholder");
 	list.textItem("Click on the \"...\" menu next to any message and then \"Send to dialog\" or \"Send to service\"");
 
 	//todo: clean this up when the action mark is supported by the adf-builder
-	var openSidebar = {
+	var openShowcaseSidebar = {
 		type: "paragraph",
 		content: [
 			{
 				type: "text",
-				text: "Click to open the sidebar",
+				text: "Click to open this sidebar",
 				marks: [
 					{
 						type: "action",
 						attrs: {
-							title: "open sidebar",
+							title: "open this sidebar",
 							target: {
-								key: "actionTarget-openSidebar"
+								key: "actionTarget-openSidebar-showcase"
 							}
 						}
 					}
@@ -116,13 +115,48 @@ module.exports.helpMenu = () => {
 			},
 			{
 				type: "text",
-				text: " and test everything you can do with the Stride API."
+				text: " to test everything you can do with the Stride API."
+			}
+		]
+	};
+	var openWatchMessagesSidebar = {
+		type: "paragraph",
+		content: [
+			{
+				type: "text",
+				text: "Click to open this sidebar",
+				marks: [
+					{
+						type: "action",
+						attrs: {
+							title: "open this sidebar",
+							target: {
+								key: "actionTarget-openSidebar-watchMessages"
+							}
+						}
+					}
+				]
+			},
+			{
+				type: "text",
+				text: " to see how you can listen to messages client-side from the Javascript API"
 			}
 		]
 	};
 	var docJSON = doc.toJSON();
-	docJSON.content[1].content[2].content[0] = openSidebar;
+	docJSON.content[2].content[2].content[0] = openShowcaseSidebar;
+	docJSON.content[2].content[3].content[0] = openWatchMessagesSidebar;
 	//end
+
+	return docJSON;
+}
+
+module.exports.helpMenu = () => {
+	const doc = new Document();
+
+	doc.paragraph()
+	.text("Here's what you can do.")
+	let docJSON = addHelpMessage(doc);
 
 	return docJSON;
 };
@@ -131,12 +165,11 @@ module.exports.welcomeMessage = appUserId => {
 	const doc = new Document();
 	doc
 		.paragraph()
-		.text(`I'm the ${app_name}! Thanks for installing me.  Ready to take the tour? `)
+		.text(`I'm the ${app_name}! Thanks for adding me.  Ready to take the tour? `)
 		.emoji(":smile:")
-		.text(" Start by sending a message mentioning my bot (")
-		.mention(`${appUserId}`)
-		.text(") to see my help menu and discover all the things you can do with the Stride API ")
-		.emoji(":thumbsup::skin-tone-2:");
+
+	addHelpMessage(doc);
+
 	return doc.toJSON();
 };
 

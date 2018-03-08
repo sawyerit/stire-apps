@@ -25,7 +25,7 @@ $(document).ready(function () {
 		/** This is how you handle dialog buttons
 		 */
 		"dialogAction-openSidebar": function () {
-			AP.sidebar.open({key: 'sidebar-1'});
+			AP.sidebar.open({key: 'sidebar-showcase'});
 		},
 
 		"dialogAction-disableButton": function () {

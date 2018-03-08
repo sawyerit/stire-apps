@@ -99,26 +99,47 @@
     ],
     "chat:sidebar": [
       {
-        "key": "sidebar-1",
+        "key": "sidebar-showcase",
         "name": {
           "value": "App Sidebar"
         },
-        "url": "/module/sidebar",
+        "url": "/module/sidebar/showcase",
+        "authentication": "jwt"
+      },
+      {
+        "key": "sidebar-watchMessages",
+        "name": {
+          "value": "Watch messages"
+        },
+        "url": "/module/sidebar/watchMessages",
         "authentication": "jwt"
       }
     ],
     "chat:glance": [
       {
-        "key": "glance-1",
+        "key": "glance-showcase",
         "name": {
-          "value": "App Glance"
+          "value": "API showcase"
         },
         "icon": {
           "url": "/public/img/logo.png",
           "url@2x": "/public/img/logo.png"
         },
-        "target": "actionTarget-openSidebar",
-        "queryUrl": "/module/glance/state",
+        "target": "actionTarget-openSidebar-showcase",
+        "queryUrl": "/module/glance/showcase/state",
+        "authentication": "jwt"
+      },
+      {
+        "key": "glance-watchMessages",
+        "name": {
+          "value": "Watch Messages"
+        },
+        "icon": {
+          "url": "/public/img/logo.png",
+          "url@2x": "/public/img/logo.png"
+        },
+        "target": "actionTarget-openSidebar-watchMessages",
+        "queryUrl": "/module/glance/watchMessages/state",
         "authentication": "jwt"
       }
     ],
@@ -164,9 +185,21 @@
     ],
     "chat:actionTarget": [
       {
-        "key": "actionTarget-openSidebar",
+        "key": "actionTarget-openConfiguration",
+        "openDialog": {
+          "key": "dialog-configuration"
+        }
+      },
+      {
+        "key": "actionTarget-openSidebar-showcase",
         "openSidebar": {
-          "key": "sidebar-1"
+          "key": "sidebar-showcase"
+        }
+      },
+      {
+        "key": "actionTarget-openSidebar-watchMessages",
+        "openSidebar": {
+          "key": "sidebar-watchMessages"
         }
       },
       {

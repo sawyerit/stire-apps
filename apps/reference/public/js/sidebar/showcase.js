@@ -26,12 +26,20 @@ $(document).ready(function() {
 			}
 		});
 
+		// You can also use AP.dialog.open({key: "dialog-1"});
 	});
 
 	$("#openConfig").click(function() {
-		AP.dialog.open({ key: "dialog-configuration" });
+		AP.action.openTarget({
+			"target": {
+				"key": "actionTarget-openConfiguration"
+			}
+		});
 	});
 
+	/**
+	 * Set the body of the chat input box
+	 */
 	$("#setMessageBody").click(function() {
 		AP.chat.setMessageBody({
 					"version": 1,
@@ -158,6 +166,14 @@ $(document).ready(function() {
 					error(event, data);
 				}
 			});
+		});
+	});
+
+	$("#listenToMessages").click(function(event) {
+		AP.action.openTarget({
+			"target": {
+				"key": "actionTarget-openSidebar-watchMessages"
+			}
 		});
 	});
 

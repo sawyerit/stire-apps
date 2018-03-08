@@ -27,7 +27,7 @@ module.exports.actionCard = () => {
 	card
 		.action()
 		.title("Open SideBar")
-		.target({ key: "actionTarget-openSidebar" });
+		.target({ key: "actionTarget-openSidebar-showcase" });
 
 	card.context(`${app_name}: Action Cards Example`).icon({
 		url: "https://image.ibb.co/fPPAB5/Stride_White_On_Blue.png",

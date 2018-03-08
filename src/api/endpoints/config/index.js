@@ -14,7 +14,7 @@ class Config {
 	/**
 	 * @name Config.Config Update
 	 * @description Update Configuration State
-	 * @param {string} configKey Key used to describe the type of configuration you are getting or setting, e.g. sidebar-1, configuration, glance-1.
+	 * @param {string} configKey Key used to describe the type of configuration you are getting or setting, e.g. sidebar-showcase, configuration, glance-showcase.
 	 * This is done in the descriptor file.
 	 * @param {object} opts opts.body = { "context": { cloudId, conversationId }, "configured": true || false }
 	 * @return {empty} none

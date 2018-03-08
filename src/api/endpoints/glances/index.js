@@ -23,7 +23,7 @@ class Glance {
 	 *
 	 "chat:glance": [
 	 {
-	   "key": "glance-1",
+	   "key": "glance-showcase",
 	   "name": {
 		 "value": "App Glance"
 	   },
@@ -31,7 +31,7 @@ class Glance {
 		 "url": "/public/img/logo.png",
 		 "url@2x": "/public/img/logo.png"
 	   },
-	   "target": "actionTarget-openSidebar",
+	   "target": "actionTarget-openSidebar-showcase",
 	   "queryUrl": "/module/glance/state",
 	   "authentication": "jwt"
 	 }

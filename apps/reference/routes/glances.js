@@ -20,7 +20,7 @@ const moduleName = "module:glance";
  * descriptor.json setup
  * ``` "chat:glance": [
  * {
- *   "key": "glance-1",
+ *   "key": "glance-showcase",
  *  "name": {
  *     "value": "App Glance"
  *   },
@@ -28,16 +28,22 @@ const moduleName = "module:glance";
  *     "url": "/icon.png",
  *     "url@2x": "/icon.png"
  *   },
- *   "target": "sidebar-1",
+ *   "target": "sidebar-showcase",
  *   "queryUrl": "/module/glance/state"
  * }
  * ]
  * ```
  *
  **/
-router.get("/glance/state", cors(), (req, res) => {
-	res.send(JSON.stringify({ label: { value: "Glance Sidebar Opened" } }));
+router.get("/glance/showcase/state", cors(), (req, res) => {
+	res.send(JSON.stringify({ label: { value: "API Showcase" } }));
 	logger.info(`${moduleName} redirect successful`);
 });
+
+router.get("/glance/watchMessages/state", cors(), (req, res) => {
+	res.send(JSON.stringify({ label: { value: "Watch Messages" } }));
+	logger.info(`${moduleName} redirect successful`);
+});
+
 
 module.exports = router;

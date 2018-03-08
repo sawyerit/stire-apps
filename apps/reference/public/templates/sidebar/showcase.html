@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<!-- Sample implementation of a chat:sidebar module -->
+<!-- Sample implementation of a chat:sidebar module with instructions to use the reference application-->
 
 <html lang="en">
 <head>
@@ -17,28 +17,13 @@
     <script src='https://dev-lib.stride.com/javascript/simple-xdm.js'></script>
 
     <!-- Import local JS file  -->
-    <script src="/public/js/sidebar.js"></script>
+    <script src="/public/js/sidebar/showcase.js"></script>
 
 </head>
 
 
 <body>
-<div id="responses">
-    <table class="ak-grid">
-        <thead>
-        <tr class="">
-            <th>Stride API Response</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>
-                <div id="info">API responses will be shown here</div>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+
 <div id="tablediv">
     <table class="ak-grid">
         <thead>
@@ -138,6 +123,14 @@
             <td headers="basic-actions">
                 <button type="button" class="ak-button ak-button__appearance-default" id="deleteMessage">
                     Send then delete message
+                </button>
+            </td>
+        </tr>
+
+        <tr>
+            <td headers="basic-actions">
+                <button type="button" class="ak-button ak-button__appearance-default" id="listenToMessages">
+                    Listen to messages sent to room
                 </button>
             </td>
         </tr>
@@ -244,6 +237,22 @@
                 <button type="button" class="ak-button ak-button__appearance-default" id="inlineMessageAction">
                     Send message with inline actions
                 </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div id="responses">
+    <table>
+        <thead>
+        <tr class="">
+            <th>Debugging</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <div id="info">API responses will be shown here</div>
             </td>
         </tr>
         </tbody>

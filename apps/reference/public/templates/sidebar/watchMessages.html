@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<!-- Sample implementation of a chat:sidebar module to listen to messages in the room -->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>App Sidebar</title>
+    <!-- Import JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Import AtlasKit: https://atlaskit.atlassian.com -->
+    <link rel="stylesheet" href="//unpkg.com/@atlaskit/css-reset@latest"/>
+    <link rel="stylesheet" href="//unpkg.com/@atlaskit/reduced-ui-pack@latest"/>
+
+    <!-- Import the Stride Javascript API -->
+    <script src='https://dev-lib.stride.com/javascript/simple-xdm.js'></script>
+
+    <!-- Import local JS file  -->
+    <script src="/public/js/sidebar/watchMessages.js"></script>
+
+</head>
+
+
+<body>
+
+<div id="tablediv">
+    <table class="ak-grid" id="messages">
+        <thead>
+        <tr>
+            <th>Messages received in room</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                New messages that you send in the room will be shown below
+            </td>
+        </tr>
+        <tr>
+            <td headers="basic-actions">
+                <button type="button" class="ak-button ak-button__appearance-default" id="openShowcase">
+                    Test other API functions
+                </button>
+            </td>
+        </tr>
+        <tr>
+
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

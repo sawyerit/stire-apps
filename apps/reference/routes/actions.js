@@ -79,7 +79,7 @@ router.post("/action/handleCardAction", cors(), async (req, res, next) => {
         if (parameters.then === "open sidebar") {
           response.nextAction = {
             target: {
-              key: "actionTarget-openSidebar"
+              key: "actionTarget-openSidebar-showcase"
             }
           };
         }
