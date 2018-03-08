@@ -139,8 +139,6 @@ router.post("/action/handleInlineMessageSelect", cors(), async (req, res, next) 
 
       const parameters = req.body.parameters;
 
-      console.log(parameters.selectedValue);
-
       var response = {
         nextAction: ''
       }
