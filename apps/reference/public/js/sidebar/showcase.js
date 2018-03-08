@@ -67,6 +67,14 @@ $(document).ready(function() {
 		);
 	});
 
+	$("#listenToMessages").click(function(event) {
+		AP.action.openTarget({
+			"target": {
+				"key": "actionTarget-openSidebar-watchMessages"
+			}
+		});
+	});
+
 	/** <----- Messages ------ > */
 
 	$("#textFormatMessage").click(function(event) {
@@ -177,13 +185,7 @@ $(document).ready(function() {
 		});
 	});
 
-	$("#listenToMessages").click(function(event) {
-		AP.action.openTarget({
-			"target": {
-				"key": "actionTarget-openSidebar-watchMessages"
-			}
-		});
-	});
+
 
 	/** <----- Users ------ > */
 
