@@ -15,10 +15,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(authMiddleware(process.env.CLIENT_SECRET));
-app.use("/public/img", express.static("public/img"));
 
 //Installation event for your app
-app.post('/installed', async function (req, res, next) {
+app.post('/lifecycle/installed', async function (req, res, next) {
 
 	const loggerInfoName = 'app_install';
 
@@ -52,7 +51,7 @@ app.post('/installed', async function (req, res, next) {
 });
 
 
-app.get('/descriptor', function (req, res, next) {
+app.get('/lifecycle/descriptor', function (req, res, next) {
 	try {
 		console.log('module:descriptor incoming request');
 
