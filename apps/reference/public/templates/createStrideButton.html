@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<!-- Example use for the Stride button https://developer.atlassian.com/cloud/stride/blocks/stride-button/ -->
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>App Dialog</title>
+
+  <!-- Import AtlasKit: https://atlaskit.atlassian.com -->
+  <link rel="stylesheet" href="//unpkg.com/@atlaskit/css-reset@latest"/>
+  <link rel="stylesheet" href="//unpkg.com/@atlaskit/reduced-ui-pack@latest"/>
+
+  <!-- Import JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+  <!-- Import local JS file  -->
+  <script src="/public/js/createStrideButton.js"></script>
+
+</head>
+<body>
+<h2>Stride button</h2>
+<p>You can trigger the installation of your Stride app in a Stride room by adding the Stride button to your website </p>
+
+<div style="width:500px">
+<form>
+  <div class="ak-field-group">
+    <label for="installUrl">App installation Url</label>
+    <input type="text" class="ak-field-text" id="installUrl" name="installUrl" placeholder="https://connect.atlassian.io/addon/descriptor/xxx/latest">
+  </div>
+  <br/>
+  <button type="button" class="ak-button ak-button__appearance-default" id="createStrideButton">
+        Create Stride button
+  </button>
+
+</form>
+  <br/>
+
+<div id="strideButton"/>
+</div>

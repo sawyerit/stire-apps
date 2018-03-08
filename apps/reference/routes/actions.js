@@ -63,11 +63,12 @@ router.post("/action/handleCardAction", cors(), async (req, res, next) => {
     logger.info(`${loggerInfoName} incoming call for ${conversationId}`);
 
     let response = {
+      message: "Done!",
       nextAction: {}
     };
 
     const parameters = req.body.parameters;
-    if (parameters.then === 'openDialog')
+    if (parameters && parameters.then === 'openDialog')
       response.nextAction = {
         target: {
           key: "actionTarget-sendToDialog"

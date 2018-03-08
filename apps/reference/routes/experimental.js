@@ -95,10 +95,6 @@ router.post("/action/handleInlineMessageAction", cors(), async (req, res, next) 
  * Inline select
  */
 
-router.options("/inlineMessageSelect", cors(), (req, res) => {
-  res.sendStatus(200);
-});
-
 router.post("/inlineMessageSelect", async (req, res, next) => {
   let loggerInfoName = "inline_message_select";
   logger.info(`${loggerInfoName} incoming request`);
@@ -128,6 +124,10 @@ router.post("/inlineMessageSelect", async (req, res, next) => {
     logger.info(`${loggerInfoName} error: ${err}`);
     next(err);
   }
+});
+
+router.options("/action/handleInlineMessageSelect", cors(), (req, res) => {
+  res.sendStatus(200);
 });
 
 router.post("/action/handleInlineMessageSelect", cors(), async (req, res, next) => {

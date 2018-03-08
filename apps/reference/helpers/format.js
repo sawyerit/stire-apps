@@ -92,6 +92,7 @@ function addHelpMessage(doc) {
 	list.textItem("Change the room name or topic, watch what happens.");
 	list.textItem("Placeholder");
 	list.textItem("Placeholder");
+	list.textItem("Placeholder");
 	list.textItem("Click on the \"...\" menu next to any message and then \"Send to dialog\" or \"Send to service\"");
 
 	//todo: clean this up when the action mark is supported by the adf-builder
@@ -143,9 +144,35 @@ function addHelpMessage(doc) {
 			}
 		]
 	};
+	var openExternalPage = {
+		type: "paragraph",
+		content: [
+			{
+				type: "text",
+				text: "Help users add your Stride app by ",
+
+			},
+			{
+				type: "text",
+				text: "adding a button to your website",
+				marks: [
+					{
+						type: "action",
+						attrs: {
+							title: "clicking a button",
+							target: {
+								key: "actionTarget-openExternalPage-createStrideButton"
+							}
+						}
+					}
+				]
+			}
+		]
+	};
 	var docJSON = doc.toJSON();
 	docJSON.content[2].content[2].content[0] = openShowcaseSidebar;
 	docJSON.content[2].content[3].content[0] = openWatchMessagesSidebar;
+	docJSON.content[2].content[4].content[0] = openExternalPage;
 	//end
 
 	return docJSON;
@@ -168,9 +195,9 @@ module.exports.welcomeMessage = appUserId => {
 		.text(`I'm the ${app_name}! Thanks for adding me.  Ready to take the tour? `)
 		.emoji(":smile:")
 
-	addHelpMessage(doc);
+	var docJSON = addHelpMessage(doc);
 
-	return doc.toJSON();
+	return docJSON;
 };
 
 module.exports.userProfileFormat = (displayName, email, userId) => {

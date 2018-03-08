@@ -183,6 +183,12 @@
         "url": "/webhooks/roster"
       }
     ],
+    "chat:externalPage": [
+      {
+        "key": "externalPage-createStrideButton",
+        "url": "/lifecycle/createStrideButton"
+      }
+    ],
     "chat:actionTarget": [
       {
         "key": "actionTarget-openConfiguration",
@@ -200,6 +206,12 @@
         "key": "actionTarget-openSidebar-watchMessages",
         "openSidebar": {
           "key": "sidebar-watchMessages"
+        }
+      },
+      {
+        "key": "actionTarget-openExternalPage-createStrideButton",
+        "openSidebar": {
+          "key": "externalPage-createStrideButton"
         }
       },
       {

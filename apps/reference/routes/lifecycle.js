@@ -103,4 +103,8 @@ router.get("/descriptor", function(req, res, next) {
 	}
 });
 
+router.get("/createStrideButton", function(req, res, next) {
+	res.redirect("/public/templates/createStrideButton.html");
+});
+
 module.exports = router;
