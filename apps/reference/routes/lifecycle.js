@@ -24,8 +24,14 @@ router.post("/installed", async function(req, res, next) {
 		userId: req.body.userId,
 		conversationId: req.body.resourceId
 	};
+
+	let relayState = req.body.relayState;
+	if(relayState)
+		logger.info(`${loggerInfoName} The app installation relayState is ${relayState}`);
+
 	try {
 		//  Here is where you can store state to your db //
+		//...
 
 		//First get the app user Id using the "/me" endpoint
 		const getAppUser = stride.api.users

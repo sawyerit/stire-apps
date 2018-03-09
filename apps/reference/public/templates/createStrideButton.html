@@ -23,12 +23,17 @@
 <h2>Stride button</h2>
 <p>You can trigger the installation of your Stride app in a Stride room by adding the Stride button to your website </p>
 <p>Copy your app installation URL from <a href="https://developer.atlassian.com/apps">https://developer.atlassian.com/apps</a> </p>
+<p>Optionally, you can add a relayState URL parameter, and Stride will send it as part of the installation event (see routes/lifecycle.js)</p>
 
 <div style="width:500px">
 <form>
   <div class="ak-field-group">
     <label for="installUrl">App installation Url</label>
     <input type="text" class="ak-field-text" id="installUrl" name="installUrl" placeholder="https://connect.atlassian.io/addon/descriptor/xxx/latest">
+  </div>
+  <div class="ak-field-group">
+    <label for="installUrl">Relay state</label>
+    <input type="text" class="ak-field-text" id="relayState" name="relayState" placeholder="ABC123 (optional)">
   </div>
   <br/>
   <button type="button" class="ak-button ak-button__appearance-default" id="createStrideButton">

@@ -64,11 +64,6 @@ $(document).ready(function () {
 
     },
     "dialogAction-closeConfiguration": function () {
-      AP.action.openTarget({
-        "target": {
-          "key": "actionTarget-openSidebar-showcase"
-        }
-      });
       AP.dialog.close();
     }
   });
