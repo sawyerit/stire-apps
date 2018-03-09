@@ -192,7 +192,8 @@ module.exports.welcomeMessage = appUserId => {
 	const doc = new Document();
 	doc
 		.paragraph()
-		.text(`I'm the ${app_name}! Thanks for adding me.  Ready to take the tour? `)
+		.text(`I'm the ${app_name}! Thanks for adding me.  Ready to take the tour? PS: to see this help menu again, just mention `)
+			.mention(appUserId)
 		.emoji(":smile:")
 
 	var docJSON = addHelpMessage(doc);

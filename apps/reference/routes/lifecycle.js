@@ -33,7 +33,8 @@ router.post("/installed", async function(req, res, next) {
 		//  Here is where you can store state to your db //
 		//...
 
-		//First get the app user Id using the "/me" endpoint
+		// We want to send a welcome message that includes a mention for the app's bot user
+		// So first, we'll get the app user Id using the "/me" endpoint
 		const getAppUser = stride.api.users
 			.me()
 			.then(response => {
