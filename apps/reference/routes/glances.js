@@ -46,30 +46,56 @@ router.get("/glance/showcase/state", cors(), (req, res) => {
 router.post("/updateGlanceState", async (req, res, next) => {
   const { cloudId, conversationId } = res.locals.context;
   const loggerInfoName = "glance_update";
-  let optsDoc = {
-    body: {
-      "context": {
-        "cloudId": cloudId,
-        "conversationId": conversationId
-      },
-      "label": "API showcase - glance updated!",
-      "metadata": {}
-    }
-  };
+
 
   try {
-    var glanceKey = 'glance-showcase'
-    stride.api.glances
+
+    //update the glance
+    var glanceKey = 'glance-showcase';
+    let optsDoc = {
+      body: {
+        "context": {
+          "cloudId": cloudId,
+          "conversationId": conversationId
+        },
+        "label": "API showcase - glance updated!",
+        "metadata": {}
+      }
+    };
+    let glanceUpdate = stride.api.glances
       .glance_update_post(glanceKey, optsDoc)
       .then(response => {
-        res.sendStatus(204);
         logger.info(
           `${loggerInfoName}:glance updated, response: ${response}`
         );
+        return response;
       })
       .catch(err => {
         logger.error(`${loggerInfoName} glance update error: ${err}`);
       });
+
+    await glanceUpdate;
+
+    // then send a confirmation message in the room
+
+    let optsDoc2 = {
+      body: "The glance state was updated",
+      headers: { "Content-Type": "text/plain", accept: "application/json" }
+    };
+
+    stride.api.messages
+      .message_send_conversation(cloudId, conversationId, optsDoc2)
+      .then(response => {
+        logger.info(
+          `${loggerInfoName}:message sent to room: ${response}`
+        );
+        res.sendStatus(204);
+      })
+      .catch(err => {
+        logger.error(`${loggerInfoName} glance update error: ${err}`);
+      });
+
+
   } catch (err) {
     logger.error(`${loggerInfoName} error found: ${err}`);
     res.sendStatus(500);
