@@ -1,22 +1,24 @@
 {
-  "name": "Stride-Hello-App",
-  "repository": "bitbucket:atlassian/stride-apps-reference/app/hello",
-  "description": "Stride hello app is a simple app that sends messages from app to stride chat.",
+  "name": "hello",
+  "version": "1.0.0",
+  "description": "a simple hello application",
+  "main": "app.js",
   "dependencies": {
-    "adf-builder": "^2.0.1",
-    "body-parser": "^1.15.2",
-    "cors": "^2.8.4",
-    "dotenv": "^5.0.0",
-    "express": "^4.14.0",
+    "adf-builder": "^3.1.0",
+    "body-parser": "^1.18.2",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.2",
     "jwt-simple": "^0.5.1",
-    "request": "^2.72.0",
-    "request-promise": "^4.2.2",
-    "stride-node-client": "file:../../src"
+    "stride-node-client": "../../src"
   },
+  "devDependencies": {},
   "scripts": {
-    "start": "node app.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "engines": {
-    "node": ">= 8.0.0"
-  }
+  "keywords": [
+    "hello",
+    "app"
+  ],
+  "author": "pshah@atlassian.com",
+  "license": "ISC"
 }
