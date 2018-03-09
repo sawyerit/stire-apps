@@ -4,6 +4,9 @@ const cors = require("cors");
 const logger = require("../middleware/logger").logger;
 const moduleName = "module:glance";
 
+const stride = require("../client");
+
+
 /**
  * @name Glances
  * @description
@@ -29,20 +32,54 @@ const moduleName = "module:glance";
  *     "url@2x": "/icon.png"
  *   },
  *   "target": "sidebar-showcase",
- *   "queryUrl": "/module/glance/state"
+ *   "queryUrl": "/glances/glance/showcase/state"
  * }
  * ]
  * ```
  *
  **/
 router.get("/glance/showcase/state", cors(), (req, res) => {
-	res.send(JSON.stringify({ label: { value: "API Showcase" } }));
-	logger.info(`${moduleName} redirect successful`);
+  res.send(JSON.stringify({label: {value: "API Showcase"}}));
+  logger.info(`${moduleName} redirect successful`);
+});
+
+router.post("/updateGlanceState", async (req, res, next) => {
+  const { cloudId, conversationId } = res.locals.context;
+  const loggerInfoName = "glance_update";
+  let optsDoc = {
+    body: {
+      "context": {
+        "cloudId": cloudId,
+        "conversationId": conversationId
+      },
+      "label": "API showcase - glance updated!",
+      "metadata": {}
+    }
+  };
+
+  try {
+    var glanceKey = 'glance-showcase'
+    stride.api.glances
+      .glance_update_post(glanceKey, optsDoc)
+      .then(response => {
+        res.sendStatus(204);
+        logger.info(
+          `${loggerInfoName}:glance updated, response: ${response}`
+        );
+      })
+      .catch(err => {
+        logger.error(`${loggerInfoName} glance update error: ${err}`);
+      });
+  } catch (err) {
+    logger.error(`${loggerInfoName} error found: ${err}`);
+    res.sendStatus(500);
+    next(err);
+  }
 });
 
 router.get("/glance/watchMessages/state", cors(), (req, res) => {
-	res.send(JSON.stringify({ label: { value: "Watch Messages" } }));
-	logger.info(`${moduleName} redirect successful`);
+  res.send(JSON.stringify({label: {value: "Watch Messages"}}));
+  logger.info(`${moduleName} redirect successful`);
 });
 
 

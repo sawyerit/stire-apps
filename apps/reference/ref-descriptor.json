@@ -65,7 +65,7 @@
             }
           ]
         },
-        "url": "/module/dialog",
+        "url": "/dialogs/dialog",
         "authentication": "jwt"
       },
       {
@@ -93,7 +93,7 @@
             }
           ]
         },
-        "url": "/module/config",
+        "url": "/configurations/config",
         "authentication": "jwt"
       }
     ],
@@ -103,7 +103,7 @@
         "name": {
           "value": "App Sidebar"
         },
-        "url": "/module/sidebar/showcase",
+        "url": "/sidebars/sidebar/showcase",
         "authentication": "jwt"
       },
       {
@@ -111,7 +111,7 @@
         "name": {
           "value": "Watch messages"
         },
-        "url": "/module/sidebar/watchMessages",
+        "url": "/sidebars/sidebar/watchMessages",
         "authentication": "jwt"
       }
     ],
@@ -126,7 +126,7 @@
           "url@2x": "/public/img/logo.png"
         },
         "target": "actionTarget-openSidebar-showcase",
-        "queryUrl": "/module/glance/showcase/state",
+        "queryUrl": "/glances/glance/showcase/state",
         "authentication": "jwt"
       },
       {
@@ -139,7 +139,7 @@
           "url@2x": "/public/img/logo.png"
         },
         "target": "actionTarget-openSidebar-watchMessages",
-        "queryUrl": "/module/glance/watchMessages/state",
+        "queryUrl": "/glances/glance/watchMessages/state",
         "authentication": "jwt"
       }
     ],
@@ -166,7 +166,7 @@
           "target": "dialog-configuration"
         },
         "state": {
-          "url": "/module/config/state"
+          "url": "/configurations/config/state"
         },
         "authentication": "jwt"
       }

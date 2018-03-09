@@ -26,10 +26,10 @@ app.use("/public/templates", express.static("public/templates"));
 
 //configure express routes
 app.use("/help", routes.help);
-app.use("/module", routes.configuration);
-app.use("/module", routes.glances);
-app.use("/module", routes.sidebars);
-app.use("/module", routes.dialogs);
+app.use("/configurations", routes.configuration);
+app.use("/glances", routes.glances);
+app.use("/sidebars", routes.sidebars);
+app.use("/dialogs", routes.dialogs);
 app.use("/actions", routes.actions);
 app.use("/messages", routes.messages);
 app.use("/bot", routes.bots);

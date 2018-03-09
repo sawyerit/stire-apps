@@ -19,7 +19,7 @@ const moduleName = "module:sidebar";
  * 		    "name": {
  * 		      "value": "App Sidebar"
  * 		    },
- * 		    "url": "/module/sidebar",
+ * 		    "url": "/sidebars/sidebar/showcase",
  * 		    "authentication": "jwt"
  * 		  }
  *    ]

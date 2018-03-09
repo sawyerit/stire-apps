@@ -24,7 +24,7 @@ const moduleName = "module:dialog";
 	   "width": "500px",
 	   "height": "300px"
 	 }
- "url": "/module/dialog",
+ "url": "/dialogs/dialog",
 "authentication": "jwt"
 },
 ]

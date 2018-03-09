@@ -45,7 +45,7 @@ router.get("/config", (req, res, next) => {
  */
 
 router.get("/config/state", cors(), async (req, res, next) => {
-	let loggerInfoName = "config_state";
+	let loggerInfoName = "config_state_get";
 
 	try {
 		const { conversationId } = res.locals.context;
@@ -56,7 +56,7 @@ router.get("/config/state", cors(), async (req, res, next) => {
 		if (!config) state.configured = false;
 
 		res.send(JSON.stringify(state));
-		logger.info(`${loggerInfoName} outgoing successful for ${conversationId}`);
+		logger.info(`${loggerInfoName} returned configuration content for ${conversationId}`);
 	} catch (err) {
 		logger.error(`${loggerInfoName} error found: ${err}`);
 		res.sendStatus(500);
@@ -70,7 +70,7 @@ router.get("/config/state", cors(), async (req, res, next) => {
  * Configuration data is saved in your app's backend
  */
 router.get("/config/content", (req, res, next) => {
-	let loggerInfoName = "config_state_get";
+	let loggerInfoName = "config_content_get";
 
 	try {
 		const conversationId = res.locals.context.conversationId;
@@ -88,7 +88,7 @@ router.get("/config/content", (req, res, next) => {
 });
 
 router.post("/config/content", async (req, res, next) => {
-	let loggerInfoName = "config_state_post";
+	let loggerInfoName = "config_content_and_state_update";
 
 	try {
 		const { cloudId, conversationId } = res.locals.context;
@@ -100,7 +100,7 @@ router.post("/config/content", async (req, res, next) => {
 		//Call config update post endpoint
 		stride.api.config.config_update_post("configuration-1", opts).then(() => {
 			res.sendStatus(204);
-			logger.info(`${loggerInfoName} outgoing successful.`);
+			logger.info(`${loggerInfoName} configuration state update successful.`);
 		});
 	} catch (err) {
 		logger.error(`${loggerInfoName} error found: ${err}`);

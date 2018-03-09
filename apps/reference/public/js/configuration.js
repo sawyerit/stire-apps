@@ -7,7 +7,7 @@ $(document).ready(function () {
     $.ajax(
       {
         type: 'GET',
-        url: '/module/config/content',
+        url: '/configurations/config/content',
         headers: {'Authorization': 'Bearer ' + token},
         dataType: 'json',
         success: function (data) {
@@ -44,7 +44,7 @@ $(document).ready(function () {
         $.ajax(
           {
             type: 'POST',
-            url: '/module/config/content',
+            url: '/configurations/config/content',
             headers: {'Authorization': 'Bearer ' + token},
             data: {'notificationLevel': notificationLevel},
             dataType: 'json',

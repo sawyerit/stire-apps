@@ -19,6 +19,26 @@ $(document).ready(function() {
 		if (data) $("#info").text(JSON.stringify(data));
 	}
 
+	/** <-------------------- Help -------------------> */
+
+	$("#helpMenu").click(function(event) {
+		init(event);
+		AP.auth.withToken(function(err, token) {
+			$.ajax({
+				type: "GET",
+				url: "/help/menu",
+				headers: { Authorization: "Bearer " + token },
+				dataType: "json",
+				success: function(data) {
+					success(event, data);
+				},
+				error: function(data) {
+					error(event, data);
+				}
+			});
+		});
+	});
+
 	/** <----- Client-side Javascript API ------ > */
 	/**
 	 * Reference documentation for the Stride Javascript API: https://developer.atlassian.com/cloud/stride/apis/jsapi/about-javascript-api/
@@ -337,14 +357,15 @@ $(document).ready(function() {
 		});
 	});
 
-	/** <-------------------- help -------------------> */
 
-	$("#helpMenu").click(function(event) {
+	/** <-------------------- Glances -------------------> */
+
+	$("#updateGlanceState").click(function(event) {
 		init(event);
 		AP.auth.withToken(function(err, token) {
 			$.ajax({
-				type: "GET",
-				url: "/help/menu",
+				type: "POST",
+				url: "/glances/updateGlanceState",
 				headers: { Authorization: "Bearer " + token },
 				dataType: "json",
 				success: function(data) {
