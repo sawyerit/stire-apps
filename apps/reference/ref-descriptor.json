@@ -79,14 +79,14 @@
             "height": "500px"
           },
           "primaryAction": {
-            "key": "action-save",
+            "key": "dialogAction-saveConfiguration",
             "name": {
               "value": "Save"
             }
           },
           "secondaryActions": [
             {
-              "key": "action-close",
+              "key": "dialogAction-closeConfiguration",
               "name": {
                 "value": "Close"
               }

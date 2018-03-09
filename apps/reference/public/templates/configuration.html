@@ -17,78 +17,10 @@
   <!-- Import the Stride Javascript API -->
   <script src='https://dev-lib.stride.com/javascript/simple-xdm.js'></script>
 
-  <script>
-    $(document).ready(function () {
+  <!-- Import local JS file  -->
+  <script src="/public/js/configuration.js"></script>
 
-      /**
-       * Load configuration settings from the app backend for this conversation
-       */
-      AP.auth.withToken(function (err, token) {
-        $.ajax(
-          {
-            type: 'GET',
-            url: '/module/config/content',
-            headers: {'Authorization': 'Bearer ' + token},
-            dataType: 'json',
-            success: function (data) {
-              var notificationLevel = data.notificationLevel;
-              switch (notificationLevel) {
-                case "INSTANT":
-                  $("#option1").prop("checked", true);
-                  break;
-                case "DAILY":
-                  $("#option2").prop("checked", true);
-                  break;
-                default:
-                  $("#option3").prop("checked", true);
-              }
-            },
-            error: function (data) {
-              console.log(data);
-            }
-          });
-      });
 
-      /**
-       * Call the app backend to save configuration settings when the user clicks on the "Save" action
-       */
-      AP.register({
-        "dialog-button-clicked": function (event, closeDialog) {
-          if (event.action === "action-save") {
-
-            //events are currently processed synchronously in the JavaScript API. Using this makes sure the dialog
-            //doesn't close before the AJAX call completes
-            closeDialog(false);
-
-            var notificationLevel = $("input[id=option1]:checked").val() ? "INSTANT" :
-              $("input[id=option2]:checked").val() ? "DAILY" : "NONE";
-
-            AP.auth.withToken(function (err, token) {
-              $.ajax(
-                {
-                  type: 'POST',
-                  url: '/module/config/content',
-                  headers: {'Authorization': 'Bearer ' + token},
-                  data: {'notificationLevel': notificationLevel},
-                  dataType: 'json',
-                  success: function (data) {
-                    console.log("saved settings");
-                    AP.dialog.close();
-                  },
-                  error: function (data) {
-                    console.log("Error" + data);
-                  }
-                });
-            });
-
-          }
-          if (event.action === "action-close") {
-            console.log("closing dialog");
-          }
-        }
-      });
-    });
-  </script>
 </head>
 <body>
 <p>This is a configuration page for the app. You can use it to ask users to configure your app for this specific
