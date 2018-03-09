@@ -12,6 +12,20 @@ module.exports.messageWithInlineActions = () => {
         "content": [
           {
             "type": "text",
+            "text": "You'll need to be on the Stride web/desktop version 1.13 or higher for this to work:",
+            "marks": [
+              {
+                type: "em"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
             "text": "Do you approve?"
           }
         ]
@@ -85,7 +99,7 @@ module.exports.inlineActionResponseMessage = (userId, reason) => {
     .strong(approvalTxt)
     .mention(userId)
   doc.paragraph()
-    .em("Note: the contract of this node will change soon. Also, the target solution supports loading/error states")
+    .em("Note: the contract of this node will change soon.")
   return doc.toJSON();
 }
 
@@ -95,6 +109,20 @@ module.exports.messageWithInlineSelect = () => {
     "version": 1,
     "type": "doc",
     "content": [
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "text": "You'll need to be on the Stride web/desktop version 1.13 or higher for this to work:",
+            "marks": [
+              {
+                type: "em"
+              }
+            ]
+          }
+        ]
+      },
       {
         "type": "paragraph",
         "content": [

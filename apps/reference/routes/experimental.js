@@ -80,9 +80,8 @@ router.post("/action/handleInlineMessageAction", cors(), async (req, res, next) 
       })
       .catch(err => {
         logger.error(`${loggerInfoName} sending the message found error: ${err}`);
+        res.sendStatus(500);
       });
-
-    res.sendStatus(204);
 
   } catch (err) {
     logger.error(`${loggerInfoName}:action error: ${err}`);
