@@ -32,13 +32,13 @@ class Glance {
 		 "url@2x": "/public/img/logo.png"
 	   },
 	   "target": "actionTarget-openSidebar-showcase",
-	   "queryUrl": "/module/glance/state",
+	   "queryUrl": "/glances/glance/showcase/state",
 	   "authentication": "jwt"
 	 }
 	 ]
 	 */
-	async glance_update_post(configKey, opts) {
-		const endpoint = `/app/module/chat/conversation/chat:configuration/${configKey}/state`;
+	async glance_update_post(glanceKey, opts) {
+		const endpoint = `/app/module/chat/conversation/chat:glance/${glanceKey}/state`;
 		return this.client.post(endpoint, opts);
 	}
 }
