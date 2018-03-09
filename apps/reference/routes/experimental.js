@@ -158,29 +158,58 @@ router.post("/action/handleInlineMessageSelect", cors(), async (req, res, next) 
               }
             };
           }
-          //if (parameters.selectedValue === "openRoom") {
-          //  response.nextAction = {
-          //    target: {
-          //      openConversation: {
-          //        conversationId: parameters.conversationId
-          //      }
-          //    }
-          //  };
-          //}
-          //  if (parameters.selectedValue === "openHighlights") {
-          //    response.nextAction = {
-          //      target: {
-          //        openHighlights: {}
-          //      }
-          //    };
-          //  }
-          //  if (parameters.selectedValue === "openFiles") {
-          //    response.nextAction = {
-          //      target: {
-          //        openFilesAndLinks: {}
-          //      }
-          //    };
-          //  }
+          if (parameters.selectedValue === "openRoom") {
+
+            var opts = {
+              body: {
+                "name": "Stride Reference App test room" + new Date().getTime(),
+                "privacy": "public",
+                "topic": "This room was created via the API"
+              }
+            }
+
+
+            let createConversation = stride.api.conversations.conversation_create(cloudId, opts)
+              .then(createRoomResponse => {
+                logger.info(
+                  `${loggerInfoName} created a room ${util.format(createRoomResponse)}`
+                );
+                return createRoomResponse;
+              })
+              .catch(err => {
+                logger.error(`${loggerInfoName} error creating room: ${err}`);
+              });
+
+            let createdRoom = await createConversation;
+
+            response.nextAction = {
+              target: {
+                receiver: "stride",
+                key: "openConversation"
+              },
+              parameters: {
+                conversationId: createdRoom.id
+              }
+            }
+
+          }
+          if (parameters.selectedValue === "openHighlights") {
+            response.nextAction = {
+              target: {
+                receiver: "stride",
+                key: "openHighlights"
+              }
+            }
+          }
+          if (parameters.selectedValue === "openFiles") {
+            response.nextAction = {
+              target: {
+                receiver: "stride",
+                key: "openFilesAndLinks"
+              }
+            }
+          }
+
         }
       }
 
