@@ -22,6 +22,11 @@
         "key": "bot-message-weather",
         "pattern": ".*weather.*",
         "url": "/bot/weather"
+      },
+      {
+        "key": "bot-message-yodawg",
+        "pattern": ".*yodawg.*",
+        "url": "/bot/yodawg"
       }
     ],
     "chat:inputAction": [

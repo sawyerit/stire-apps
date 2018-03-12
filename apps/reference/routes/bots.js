@@ -144,5 +144,38 @@ router.post("/weather", async (req, res, next) => {
 	}
 });
 
+router.post("/yodawg", async (req, res, next) => {
+	//for webhooks you need to send a response asap, or Stride will try to deliver the message again (up to 3 times)
+	res.sendStatus(204);
+	let loggerInfoName = "bot_messages";
+
+	try {
+		const { cloudId, conversationId } = res.locals.context;
+		logger.info(`${loggerInfoName} message incoming for ${conversationId}: ${req.body.type}`);
+
+		//call weather API
+		const weatherResponse = await weather.weatherRequest("78701", "US").catch(err => {
+			logger.error(`${loggerInfoName} found error: ${err}`);
+		});
+
+		// Call your already constructed weather card
+		const message = "bot message triggered!";
+		const messageOptsBody = weather.weatherCard(message, weatherResponse);
+
+		let opts = { body: messageOptsBody };
+		stride.api.messages
+			.message_send_conversation(cloudId, conversationId, opts)
+			.then(messageWebhookResponse => {
+				logger.info(`${loggerInfoName} outgoing successful ${util.format(messageWebhookResponse)}`);
+			})
+			.catch(err => {
+				logger.error(`${loggerInfoName} sending webhook message found error: ${err}`);
+			});
+	} catch (err) {
+		logger.error(`${loggerInfoName} error found: ${err}`);
+		next(err);
+	}
+});
+
 
 module.exports = router;
